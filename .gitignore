@@ -10,8 +10,8 @@ out/
 .env.local
 .env.*.local
 
-# Translations — generated at deploy time via careers:translate
-src/content/translations/
+# Translations are committed to git for Vercel deploy
+# src/content/translations/
 
 # Build artifacts
 .vercel
