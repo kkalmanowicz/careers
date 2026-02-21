@@ -4,6 +4,16 @@ import { LANGUAGE_LABELS, LANGUAGES } from "@/lib/categories";
 import StructuredData from "./StructuredData";
 import { jobPostingSchema, howToSchema } from "@/lib/structured-data";
 
+const FILLED_LABELS: Record<Language, { filled: string; seeOpenings: string; viewAll: string }> = {
+  en: { filled: "This position has been filled.", seeOpenings: "See current openings:", viewAll: "View all roles →" },
+  zh: { filled: "该职位已关闭。", seeOpenings: "查看当前职位：", viewAll: "查看所有职位 →" },
+  ko: { filled: "이 포지션은 마감되었습니다.", seeOpenings: "현재 채용 공고:", viewAll: "모든 직무 보기 →" },
+  es: { filled: "Esta posición ha sido cubierta.", seeOpenings: "Ver ofertas actuales:", viewAll: "Ver todos los roles →" },
+  pt: { filled: "Esta vaga foi preenchida.", seeOpenings: "Ver vagas atuais:", viewAll: "Ver todos os cargos →" },
+  de: { filled: "Diese Stelle wurde besetzt.", seeOpenings: "Aktuelle Stellen:", viewAll: "Alle Stellen anzeigen →" },
+  ja: { filled: "このポジションは充足されました。", seeOpenings: "現在の求人：", viewAll: "すべての求人を見る →" },
+};
+
 interface JobPostingProps {
   job: JobPosting;
   lang: Language;
@@ -16,6 +26,9 @@ export default function JobPostingComponent({ job, lang, url }: JobPostingProps)
     howToSchema(job),
   ].filter(Boolean);
 
+  const isFilled = job.status === "filled";
+  const filledLabels = FILLED_LABELS[lang];
+
   return (
     <article
       itemScope
@@ -24,8 +37,26 @@ export default function JobPostingComponent({ job, lang, url }: JobPostingProps)
       data-category={job.category}
       data-subcategory={job.subcategory ?? ""}
       data-lang={lang}
+      data-status={job.status ?? "active"}
     >
       <StructuredData data={schemas} />
+
+      {isFilled && job.replacedBy && (
+        <aside data-section="position-filled" aria-label="Position filled notice">
+          <p><strong>{filledLabels.filled}</strong></p>
+          <p>{filledLabels.seeOpenings}</p>
+          <ul>
+            {job.replacedBy.map((r) => (
+              <li key={r.slug}>
+                <a href={`/${lang}/${r.category}/${r.slug}`}>{r.title}</a>
+              </li>
+            ))}
+          </ul>
+          <p>
+            <a href={`/${lang}/${job.category}`}>{filledLabels.viewAll}</a>
+          </p>
+        </aside>
+      )}
 
       <header>
         {/* Language alternates */}

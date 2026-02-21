@@ -1,9 +1,13 @@
 /**
  * translate.ts
- * Translates all EN job JSON files to 6 other languages via AWS Bedrock.
+ * Translates EN job JSON files to 6 other languages via AI Gateway.
+ *
  * Run: npm run careers:translate
- * Or: npm run careers:translate -- --lang=zh (single language)
- * Or: npm run careers:translate -- --category=defi (single category)
+ * Or: npm run careers:translate -- --lang=zh               (single language)
+ * Or: npm run careers:translate -- --category=defi         (single category)
+ * Or: npm run careers:translate -- --batch=2026-03-07      (new batch only)
+ * Or: npm run careers:translate -- --slug=analytics-2026-03-07  (spot-check one job × all langs)
+ * Or: npm run careers:translate -- --force                 (retranslate all, ignore hash)
  */
 
 import "dotenv/config";
@@ -20,6 +24,8 @@ const TRANSLATIONS_DIR = path.join(process.cwd(), "src/content/translations");
 const args = process.argv.slice(2);
 const langArg = args.find((a) => a.startsWith("--lang="))?.split("=")[1] as Language | undefined;
 const categoryArg = args.find((a) => a.startsWith("--category="))?.split("=")[1];
+const batchArg = args.find((a) => a.startsWith("--batch="))?.split("=")[1];    // filter by batchDate
+const slugArg = args.find((a) => a.startsWith("--slug="))?.split("=")[1];      // single slug spot-check
 const forceArg = args.includes("--force");
 
 const targetLangs = langArg
@@ -73,11 +79,13 @@ async function main() {
         fs.statSync(path.join(JOBS_DIR, f)).isDirectory()
       );
 
+  if (batchArg) console.log(`Batch filter: ${batchArg}`);
+  if (slugArg) console.log(`Slug filter: ${slugArg}`);
   console.log(`Translating to: ${targetLangs.join(", ")}`);
   console.log(`Categories: ${categories.join(", ")}`);
   console.log();
 
-  // Build full task list
+  // Build full task list (filtered by --batch or --slug if provided)
   const tasks: Array<{ lang: Language; category: string; slug: string }> = [];
   for (const lang of targetLangs) {
     for (const category of categories) {
@@ -85,7 +93,20 @@ async function main() {
       if (!fs.existsSync(catDir)) continue;
       const files = fs.readdirSync(catDir).filter((f) => f.endsWith(".json"));
       for (const file of files) {
-        tasks.push({ lang, category, slug: file.replace(".json", "") });
+        const slug = file.replace(".json", "");
+
+        // --slug: only the specific slug (search across all categories)
+        if (slugArg && slug !== slugArg) continue;
+
+        // --batch: only files whose batchDate matches
+        if (batchArg) {
+          const jobData = JSON.parse(
+            fs.readFileSync(path.join(catDir, file), "utf-8")
+          ) as { batchDate?: string };
+          if (jobData.batchDate !== batchArg) continue;
+        }
+
+        tasks.push({ lang, category, slug });
       }
     }
   }

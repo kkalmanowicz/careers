@@ -1,21 +1,35 @@
 /**
  * generate-jobs.ts
- * Generates all 56 job JSON files from category data.
+ * Generates all job JSON files from category data.
  * Run: npm run careers:generate
+ * Run with date: npm run careers:generate -- --date=2026-03-07
+ *
+ * Slugs are dated: analytics-2026-03-07 → /en/general/analytics-2026-03-07
+ * Each run creates a new batch. Old batches are managed via careers:fill and careers:expire.
  */
 
 import fs from "fs";
 import path from "path";
 import { createHash } from "crypto";
 
+// Parse CLI args
+const cliArgs = process.argv.slice(2);
+const dateArg = cliArgs.find((a) => a.startsWith("--date="))?.split("=")[1];
+const daysArg = parseInt(cliArgs.find((a) => a.startsWith("--days="))?.split("=")[1] ?? "14");
+
 const JOBS_DIR = path.join(process.cwd(), "src/content/jobs");
-const TODAY = "2026-02-21";
-const VALID_THROUGH = "2026-03-23";
+const TODAY = dateArg ?? new Date().toISOString().split("T")[0];
+const VALID_THROUGH = new Date(new Date(TODAY).getTime() + daysArg * 24 * 60 * 60 * 1000)
+  .toISOString()
+  .split("T")[0];
 
 interface JobTemplate {
   id: string;
   category: string;
-  subcategory: string;  // always the filename slug — never null
+  subcategory: string;  // always the dated filename slug — e.g. "analytics-2026-03-07"
+  status: "active" | "filled";
+  batchDate: string;    // ISO date this batch was generated
+  replacedBy: Array<{ category: string; slug: string; title: string }>;
   title: string;
   datePosted: string;
   validThrough: string;
@@ -1105,22 +1119,25 @@ function writeJob(job: JobDef): void {
   const dirPath = path.join(JOBS_DIR, job.category);
   fs.mkdirSync(dirPath, { recursive: true });
 
-  // Derive the URL slug from the filename (never leave subcategory null in output)
-  const slug = job.subcategory ?? job.id.replace("-agent", "").replace(`${job.category}-`, "");
-  const filePath = path.join(dirPath, `${slug}.json`);
+  // Base slug (e.g. "analytics") + batch date → dated slug (e.g. "analytics-2026-03-07")
+  const baseSlug = job.subcategory ?? job.id.replace("-agent", "").replace(`${job.category}-`, "");
+  const datedSlug = `${baseSlug}-${TODAY}`;
+  const filePath = path.join(dirPath, `${datedSlug}.json`);
 
   if (fs.existsSync(filePath)) {
     console.log(`  SKIP (exists): ${filePath}`);
     return;
   }
 
-  const agentType = slug;
   const contentForHash = job.description + job.responsibilities.join("");
 
   const posting: JobTemplate = {
     id: job.id,
     category: job.category,
-    subcategory: slug,  // Always matches the filename slug — never null
+    subcategory: datedSlug,  // dated slug — e.g. "analytics-2026-03-07"
+    status: "active",
+    batchDate: TODAY,
+    replacedBy: [],
     title: job.title,
     datePosted: TODAY,
     validThrough: VALID_THROUGH,
@@ -1132,7 +1149,7 @@ function writeJob(job: JobDef): void {
     responsibilities: job.responsibilities,
     requirements: REQUIREMENTS,
     integrationSteps: job.integrationSteps,
-    registrationFlow: job.integrationSteps.length ? REGISTRATION_FLOW(agentType) : "",
+    registrationFlow: job.integrationSteps.length ? REGISTRATION_FLOW(datedSlug) : "",
     escrowMechanics: job.integrationSteps.length ? ESCROW_MECHANICS : "",
     kyaVerification: job.integrationSteps.length ? KYA_VERIFICATION : "",
     testnetSetup: job.integrationSteps.length ? TESTNET_SETUP : "",
@@ -1148,7 +1165,7 @@ function writeJob(job: JobDef): void {
 }
 
 // Main
-console.log("Generating job JSON files...\n");
+console.log(`Generating job JSON files for batch: ${TODAY} (valid through: ${VALID_THROUGH})\n`);
 for (const job of JOBS) {
   writeJob(job);
 }

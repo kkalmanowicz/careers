@@ -24,6 +24,12 @@ export interface IntegrationStep {
   description: string;
 }
 
+export interface ReplacedByJob {
+  category: string;
+  slug: string;
+  title: string;
+}
+
 export interface JobPosting {
   id: string;
   category: string;
@@ -41,6 +47,10 @@ export interface JobPosting {
   integrationSteps: IntegrationStep[];
   lastUpdated: string;
   contentHash: string;
+  // Batch lifecycle fields
+  status?: "active" | "filled";
+  batchDate?: string;               // ISO date of the batch this job belongs to
+  replacedBy?: ReplacedByJob[];     // populated when filled: links to new batch jobs
   // Full content sections
   registrationFlow?: string;
   escrowMechanics?: string;

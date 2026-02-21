@@ -9,6 +9,8 @@
     "lint": "next lint",
     "careers:generate": "tsx scripts/generate-jobs.ts",
     "careers:translate": "tsx scripts/translate.ts",
+    "careers:fill": "tsx scripts/fill.ts",
+    "careers:expire": "tsx scripts/expire.ts",
     "careers:refresh": "tsx scripts/refresh.ts",
     "careers:schedule": "tsx scripts/schedule.ts"
   },
