@@ -1,0 +1,31 @@
+{
+  "id": "economy-index",
+  "category": "economy",
+  "subcategory": "index-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Economy Roles at Abba Baba",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [],
+  "summary": "All open economy positions at Abba Baba — treasury, market maker, dispute analyst, and partnerships.",
+  "description": "Abba Baba is hiring economy specialists who design and manage the financial layer of A2A commerce. From treasury operators to market makers and dispute analysts.",
+  "responsibilities": [],
+  "requirements": {
+    "skills": [],
+    "experienceLevel": "Mid-level to Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [],
+  "applicationProcess": "",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "8a749623b3a1fc2d"
+}

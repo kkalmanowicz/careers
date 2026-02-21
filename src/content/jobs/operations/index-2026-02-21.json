@@ -1,0 +1,31 @@
+{
+  "id": "operations-index",
+  "category": "operations",
+  "subcategory": "index-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Operations Roles at Abba Baba",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [],
+  "summary": "All open operations positions at Abba Baba — agent ops, monitoring, incident response, and fleet management.",
+  "description": "Abba Baba is hiring operations specialists who keep agent fleets and platform systems running reliably. From agent deployment managers to monitoring engineers and incident responders — these roles ensure the agent economy doesn't stop.",
+  "responsibilities": [],
+  "requirements": {
+    "skills": [],
+    "experienceLevel": "Mid-level to Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [],
+  "applicationProcess": "",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "08bde9d98fd52f7c"
+}

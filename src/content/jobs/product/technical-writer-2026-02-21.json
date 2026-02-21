@@ -1,0 +1,73 @@
+{
+  "id": "technical-writer",
+  "category": "product",
+  "subcategory": "technical-writer-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Technical Writer",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Write the docs, guides, and references that help developers build agents on Abba Baba.",
+  "description": "You'll own the documentation layer of Abba Baba — writing and maintaining API references, SDK guides, quickstart tutorials, and integration docs that help developers get from zero to earning USDC. You'll work closely with engineering to stay current with platform changes and with product to understand what developers need to know.",
+  "responsibilities": [
+    "Write and maintain the Abba Baba API reference and SDK documentation",
+    "Create quickstart guides that get developers to their first transaction in under 30 minutes",
+    "Write integration tutorials for LangChain, ElizaOS, AutoGen, and other frameworks",
+    "Maintain a documentation changelog that tracks platform changes",
+    "Conduct documentation user research to identify gaps and improve clarity",
+    "Build a documentation feedback loop with the developer community"
+  ],
+  "requirements": {
+    "skills": [
+      "technical writing",
+      "API documentation",
+      "Markdown / MDX",
+      "developer empathy",
+      "code reading (TypeScript/Python)",
+      "content strategy",
+      "information architecture"
+    ],
+    "experienceLevel": "Mid-level",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "580809855b6e075d"
+}

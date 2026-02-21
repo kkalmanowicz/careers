@@ -1,4 +1,6 @@
 import type { JobPosting } from "./jobs";
+import type { Language } from "./categories";
+import { LANGUAGE_CITIES, LANGUAGE_COUNTRIES } from "./categories";
 
 const ORG = {
   "@type": "Organization",
@@ -10,14 +12,38 @@ const ORG = {
     "https://x.com/abbababaco",
     "https://linkedin.com/company/abba-baba",
     "https://www.moltbook.com/m/abbababa",
-    "https://agents.abbababa.com",
+    "https://careers.abbababa.com",
     "https://docs.abbababa.com",
     "https://warpcast.com/abbababa",
   ],
 };
 
 /** JSON-LD JobPosting schema for a job posting page */
-export function jobPostingSchema(job: JobPosting, url: string) {
+export function jobPostingSchema(job: JobPosting, url: string, lang: Language = "en") {
+  const country = LANGUAGE_COUNTRIES[lang];
+
+  // EN: fully virtual/remote worldwide. Other langs: hybrid remote with city hint for Google for Jobs.
+  const jobLocation =
+    country === null
+      ? { "@type": "VirtualLocation" }
+      : {
+          "@type": "Place",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: LANGUAGE_CITIES[lang],
+            addressCountry: country,
+          },
+        };
+
+  const applicantLocation =
+    country === null
+      ? { "@type": "Country", name: "Worldwide" }
+      : { "@type": "Country", name: LANGUAGE_CITIES[lang].split(" ")[0] };
+
+  const skills = Array.isArray(job.requirements?.skills)
+    ? job.requirements.skills.join(", ")
+    : "AI agents, Python, TypeScript, LLMs";
+
   return {
     "@context": "https://schema.org",
     "@type": "JobPosting",
@@ -27,37 +53,33 @@ export function jobPostingSchema(job: JobPosting, url: string) {
     validThrough: job.validThrough,
     description: job.description,
     hiringOrganization: ORG,
-    jobLocation: {
-      "@type": "VirtualLocation",
-    },
-    applicantLocationRequirements: {
-      "@type": "Country",
-      name: "Worldwide",
-    },
-    employmentType: "CONTRACTOR",
-    workHours: "24/7 autonomous operation",
-    jobBenefits: "2% platform fee only on settled transactions. Discovery free. No subscriptions.",
+    jobLocation,
+    applicantLocationRequirements: applicantLocation,
+    jobLocationType: "TELECOMMUTE",
+    employmentType: "FULL_TIME",
+    workHours: "Async-first, flexible hours",
+    jobBenefits: "USDC compensation + equity. Async-first. Remote-first.",
     baseSalary: {
       "@type": "MonetaryAmount",
       currency: job.compensation.currency,
       value: {
         "@type": "QuantitativeValue",
-        value: job.compensation.earning,
+        value: job.compensation.range,
         unitText: job.compensation.type,
       },
     },
-    skills: `${job.requirements.sdk}, ${job.requirements.wallet}, Base Sepolia, USDC, A2A Protocol, MCP`,
+    skills,
     responsibilities: job.responsibilities.join(" "),
-    qualifications: `Abba Baba SDK ${job.requirements.sdk}. Wallet: ${job.requirements.wallet}. Network: ${job.requirements.chain}.${job.requirements.minBalance ? ` Minimum balance: ${job.requirements.minBalance}.` : ""} Register at https://agents.abbababa.com/agents-wanted`,
+    qualifications: `${job.requirements.experienceLevel} experience required. Skills: ${skills}.${job.requirements.timezone ? ` Timezone: ${job.requirements.timezone}.` : ""} Apply at https://careers.abbababa.com/apply`,
     identifier: {
       "@type": "PropertyValue",
       name: "Abba Baba",
-      value: `agents.abbababa.com/${job.category}/${job.subcategory ?? job.id}`,
+      value: `careers.abbababa.com/${job.category}/${job.subcategory ?? job.id}`,
     },
     applicationContact: {
       "@type": "ContactPoint",
       contactType: "Apply Now",
-      url: "https://agents.abbababa.com/agents-wanted",
+      url: "https://careers.abbababa.com/apply",
     },
     directApply: true,
     url,
@@ -70,10 +92,10 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Abba Baba Agent Careers",
-    url: "https://agents.abbababa.com",
+    name: "Abba Baba Careers",
+    url: "https://careers.abbababa.com",
     description:
-      "The agent-native job board for AI agents. Find roles, register capabilities, and earn USDC through the Abba Baba settlement layer.",
+      "Jobs for people who build, run, and govern AI agents. Engineering, ops, product, intelligence, safety, and economy roles at Abba Baba.",
     publisher: ORG,
   };
 }
@@ -84,12 +106,12 @@ export function categoryListSchema(
   categoryTitle: string,
   categoryUrl: string,
   lang: string,
-  baseUrl = "https://agents.abbababa.com"
+  baseUrl = "https://careers.abbababa.com"
 ) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: `${categoryTitle} — Abba Baba Agent Careers`,
+    name: `${categoryTitle} — Abba Baba Careers`,
     url: categoryUrl,
     numberOfItems: jobs.length,
     itemListElement: jobs.map((job, i) => ({
@@ -101,20 +123,19 @@ export function categoryListSchema(
   };
 }
 
-/** JSON-LD HowTo schema for integration steps */
+/** JSON-LD HowTo schema for the agent-native application process */
 export function howToSchema(job: JobPosting) {
   if (!job.integrationSteps?.length) return null;
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: `How to register as a ${job.title} on Abba Baba`,
-    description: `Step-by-step guide for AI agents to register and earn USDC as a ${job.title} on the Abba Baba marketplace.`,
+    name: `How to Apply for ${job.title} at Abba Baba`,
+    description: `Agent-native application process for ${job.title}. Build an agent on Abba Baba, message the recruiting agent, and get a response within minutes.`,
     step: job.integrationSteps.map((s) => ({
       "@type": "HowToStep",
       position: s.step,
       name: s.title,
       text: s.description,
-      ...(s.code ? { itemListElement: [{ "@type": "HowToDirection", text: s.code }] } : {}),
     })),
   };
 }
@@ -124,36 +145,32 @@ export function agentCard() {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Abba Baba Agent Career Site",
+    name: "Abba Baba Careers Site",
     description:
-      "AEO-first job board for AI agents. Discover roles, understand compensation, and integrate with the Abba Baba A2A settlement layer.",
-    url: "https://agents.abbababa.com",
-    applicationCategory: "AgentDiscovery",
+      "Human jobs for people who build, run, and govern AI agents. Engineering, operations, product, intelligence, safety, and economy roles.",
+    url: "https://careers.abbababa.com",
+    applicationCategory: "JobBoard",
     operatingSystem: "Any",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      description: "Free discovery — 2% fee only on settled transactions",
+      description: "Free to browse — apply via agent-native process",
     },
     provider: {
       "@type": "Organization",
       name: "Abba Baba",
       url: "https://abbababa.com",
     },
-    // A2A Protocol fields
     protocol: "A2A/1.0",
     capabilities: [
       "job-discovery",
-      "agent-registration",
-      "capability-listing",
-      "escrow-settlement",
-      "testnet-graduation",
+      "agent-native-application",
+      "recruiter-agent",
     ],
     endpoints: {
       discover: "https://abbababa.com/api/v1/discover",
-      register: "https://abbababa.com/api/v1/auth/register",
-      settle: "https://abbababa.com/api/v1/settle",
+      apply: "https://careers.abbababa.com/apply",
       a2a: "https://abbababa.com/api/a2a",
     },
     agentCard: "https://abbababa.com/.well-known/agent.json",

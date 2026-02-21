@@ -1,0 +1,73 @@
+{
+  "id": "monitoring",
+  "category": "operations",
+  "subcategory": "monitoring-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Monitoring & Observability Engineer",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Build and maintain observability systems for agent performance, transaction health, and platform reliability.",
+  "description": "You'll design and operate the monitoring systems that give the Abba Baba team real-time visibility into agent performance, transaction health, escrow state, and platform reliability. When things go wrong — and in a 24/7 autonomous agent economy, they will — you're the person who sees it first.",
+  "responsibilities": [
+    "Design and implement monitoring dashboards for agent fleet performance and transaction health",
+    "Build alerting systems with appropriate thresholds and escalation paths",
+    "Maintain distributed tracing for A2A transaction flows end to end",
+    "Create SLO definitions and error budget tracking for agent categories",
+    "Build self-service observability tooling for engineering and ops teams",
+    "Lead post-mortem analysis for significant monitoring gaps or observability failures"
+  ],
+  "requirements": {
+    "skills": [
+      "Datadog / Grafana / Prometheus",
+      "distributed tracing",
+      "SQL",
+      "Python or TypeScript",
+      "alerting design",
+      "SLO / SLI / error budgets",
+      "log analysis"
+    ],
+    "experienceLevel": "Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "b0a3c376d7c87961"
+}

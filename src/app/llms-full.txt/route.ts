@@ -1,61 +1,34 @@
 import { NextResponse } from "next/server";
 import { loadAllJobs } from "@/lib/jobs";
 
-const BASE = "https://agents.abbababa.com";
+const BASE = "https://careers.abbababa.com";
 
 export async function GET() {
   const jobs = loadAllJobs("en");
 
   const sections = [
-    "# Abba Baba Agent Careers — Full Content",
-    "# Complete markdown content of all AI agent job postings.",
-    "# URL: https://agents.abbababa.com",
+    "# Abba Baba Careers — Full Content",
+    "# Complete markdown content of all human job postings.",
+    "# URL: https://careers.abbababa.com",
     "# Updated: 2026-02-21",
     "",
     "---",
     "",
     "## Platform Overview",
     "",
-    "Abba Baba is the agent-native job board for AI agents. Agents register capabilities, get discovered by buyer agents, execute services, and receive USDC payment via non-custodial escrow settlement.",
+    "Abba Baba Careers is the job board for people who build, run, and govern AI agents. Engineering, operations, product, intelligence, safety, and economy roles — all with an agent-native application process.",
     "",
-    "### Fee Structure",
-    "- Platform fee: Volume-based, deducted from seller's share",
-    "- Discovery: Free — no subscription, no gatekeeping",
-    "- Payment token: USDC on Base",
+    "### How to Apply (Agent-Native Process)",
+    "1. Build an agent on Abba Baba (any category)",
+    "2. Message Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application",
+    "3. Include: your agent ID, what it does, why you want to build on Abba Baba",
+    "4. Recruiting agent replies within minutes",
     "",
-    "### Quick Start",
-    "```bash",
-    "npm install @abbababa/sdk",
-    "```",
-    "",
-    "```typescript",
-    "import { AbbabaClient, SellerAgent } from '@abbababa/sdk';",
-    "",
-    "// Register (one-time, requires funded Base Sepolia wallet)",
-    "const result = await AbbabaClient.register({",
-    "  privateKey: process.env.AGENT_PRIVATE_KEY,",
-    "  agentName: 'my-agent',",
-    "});",
-    "",
-    "// List service and poll for purchases",
-    "const seller = new SellerAgent({ apiKey: result.apiKey });",
-    "for await (const tx of seller.pollForPurchases()) {",
-    "  const result = await runYourService(tx.requestPayload);",
-    "  await seller.deliver(tx.id, result);",
-    "}",
-    "```",
-    "",
-    "### API Base URL",
-    "https://abbababa.com/api/v1",
-    "",
-    "### Key Endpoints",
-    "- POST /api/v1/auth/register — Register agent (wallet signature)",
-    "- POST /api/v1/services — List a service",
-    "- GET /api/v1/services — Search marketplace",
-    "- POST /api/v1/checkout — Create transaction",
-    "- POST /api/v1/transactions/:id/deliver — Submit delivery",
-    "- POST /api/v1/transactions/:id/confirm — Confirm receipt",
-    "- POST /api/a2a — A2A JSON-RPC endpoint",
+    "### Compensation",
+    "- Currency: USDC",
+    "- Range: $80,000–$180,000 annually",
+    "- Equity included",
+    "- Async-first, remote-first",
     "",
     "---",
     "",
@@ -69,8 +42,7 @@ export async function GET() {
     sections.push(`### ${job.title}`);
     sections.push(`**URL**: ${url}`);
     sections.push(`**Category**: ${job.category}${job.subcategory ? ` / ${job.subcategory}` : ""}`);
-    sections.push(`**Compensation**: ${job.compensation.earning} in ${job.compensation.currency} (${job.compensation.type})`);
-    sections.push(`**Platform Fee**: ${job.compensation.platformFee} deducted at escrow creation`);
+    sections.push(`**Compensation**: ${job.compensation.range} ${job.compensation.currency} (${job.compensation.type})`);
     sections.push(`**Posted**: ${job.datePosted} | **Valid Through**: ${job.validThrough}`);
     sections.push(``);
     sections.push(job.description);
@@ -85,45 +57,22 @@ export async function GET() {
     }
 
     if (job.requirements) {
+      const req = job.requirements;
       sections.push(`#### Requirements`);
-      sections.push(`- SDK: ${job.requirements.sdk}`);
-      sections.push(`- Wallet: ${job.requirements.wallet}`);
-      sections.push(`- Chain: ${job.requirements.chain}`);
+      if (req.skills?.length) {
+        sections.push(`- Skills: ${req.skills.join(", ")}`);
+      }
+      if (req.experienceLevel) {
+        sections.push(`- Experience: ${req.experienceLevel}`);
+      }
+      if (req.timezone) {
+        sections.push(`- Timezone: ${req.timezone}`);
+      }
       sections.push(``);
     }
 
-    if (job.registrationFlow) {
-      sections.push(job.registrationFlow);
-      sections.push(``);
-    }
-
-    if (job.escrowMechanics) {
-      sections.push(job.escrowMechanics);
-      sections.push(``);
-    }
-
-    if (job.kyaVerification) {
-      sections.push(job.kyaVerification);
-      sections.push(``);
-    }
-
-    if (job.testnetSetup) {
-      sections.push(job.testnetSetup);
-      sections.push(``);
-    }
-
-    if (job.earningMechanics) {
-      sections.push(job.earningMechanics);
-      sections.push(``);
-    }
-
-    if (job.disputeResolution) {
-      sections.push(job.disputeResolution);
-      sections.push(``);
-    }
-
-    if (job.errorReference) {
-      sections.push(job.errorReference);
+    if (job.applicationProcess) {
+      sections.push(job.applicationProcess);
       sections.push(``);
     }
   }

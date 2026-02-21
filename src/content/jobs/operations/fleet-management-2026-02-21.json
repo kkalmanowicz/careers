@@ -1,0 +1,73 @@
+{
+  "id": "fleet-management",
+  "category": "operations",
+  "subcategory": "fleet-management-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Agent Fleet Manager",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Orchestrate large-scale agent deployments — scaling, versioning, and coordinating agent networks.",
+  "description": "You'll own the coordination layer for Abba Baba's agent fleet — managing scaling decisions, version coordination, category-level performance targets, and the operational systems that keep hundreds of agents running in sync. This is a systems-thinking role with direct impact on marketplace supply.",
+  "responsibilities": [
+    "Define and execute fleet scaling strategies for high-demand agent categories",
+    "Coordinate version rollouts across agent fleets with minimal disruption to buyers",
+    "Maintain fleet health dashboards with category-level performance visibility",
+    "Design capacity planning models for agent category growth",
+    "Coordinate with engineering on platform features that affect fleet operations",
+    "Define fleet operational standards and ensure adherence across agent categories"
+  ],
+  "requirements": {
+    "skills": [
+      "operations strategy",
+      "data analysis",
+      "Python or TypeScript",
+      "systems thinking",
+      "capacity planning",
+      "stakeholder coordination",
+      "process design"
+    ],
+    "experienceLevel": "Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "b4867c8b5f649d0b"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "smart-contract",
+  "category": "engineering",
+  "subcategory": "smart-contract-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Smart Contract Engineer",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Design, audit, and deploy escrow contracts and settlement logic on Base.",
+  "description": "You'll own the on-chain layer of Abba Baba — designing and auditing the AbbababaEscrowV2 contract, building the settlement logic that processes thousands of A2A transactions, and ensuring the cryptographic guarantees that make trustless agent commerce possible. You'll work on Base (EVM) with Solidity, and you'll be expected to think adversarially about every contract change.",
+  "responsibilities": [
+    "Design and implement smart contract upgrades for the AbbababaEscrowV2 settlement system",
+    "Conduct internal security reviews before every contract deployment",
+    "Write comprehensive test suites (unit, integration, fuzzing) for all contract logic",
+    "Coordinate external audits and respond to findings with documented remediations",
+    "Monitor on-chain contract health — dispute rates, gas costs, revert patterns",
+    "Research and evaluate new EVM primitives and token standards for platform use"
+  ],
+  "requirements": {
+    "skills": [
+      "Solidity",
+      "Foundry / Hardhat",
+      "EVM internals",
+      "Base / Ethereum",
+      "USDC / ERC-20",
+      "security auditing",
+      "formal verification"
+    ],
+    "experienceLevel": "Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "620a1506bab06fe8"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "prompt-engineer",
+  "category": "intelligence",
+  "subcategory": "prompt-engineer-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Prompt Engineer",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Design, test, and optimize prompts for agent behaviors across marketplace categories.",
+  "description": "You'll own the prompting layer for Abba Baba's agent behaviors — designing, iterating, and systematically optimizing prompts that control how agents negotiate, discover, QC-check, and settle transactions. You'll build evaluation sets, run experiments, and maintain a prompt library that improves agent performance measurably.",
+  "responsibilities": [
+    "Design and iterate prompts for core agent behaviors (negotiation, discovery, QC, settlement)",
+    "Build evaluation datasets that measure prompt performance against target behaviors",
+    "Run systematic A/B experiments on prompt variations with statistically valid sample sizes",
+    "Maintain a versioned prompt library with performance history for each variant",
+    "Identify prompt failure modes and design mitigations before production deployment",
+    "Document prompting patterns and anti-patterns for the engineering team"
+  ],
+  "requirements": {
+    "skills": [
+      "prompt engineering",
+      "LLM evaluation",
+      "Python",
+      "experimental design",
+      "Claude / GPT / Gemini API",
+      "behavioral analysis",
+      "documentation"
+    ],
+    "experienceLevel": "Mid-level",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "d7afdbadc501c2f5"
+}

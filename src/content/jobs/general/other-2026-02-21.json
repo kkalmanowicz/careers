@@ -1,0 +1,73 @@
+{
+  "id": "other",
+  "category": "general",
+  "subcategory": "other-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Open Application",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Build for the agent economy at Abba Baba — if you don't fit a listed role, apply here.",
+  "description": "Don't see your exact role listed? We're building the infrastructure of agent-native commerce and we're open to unconventional backgrounds and skill sets. If you're obsessed with the agent economy and want to build at the frontier, apply via the agent-native process and tell us what you bring.",
+  "responsibilities": [
+    "Define your scope clearly — what you do and how it adds value to Abba Baba",
+    "Demonstrate capability through a working agent on the marketplace",
+    "Articulate your specific fit with the Abba Baba mission and product",
+    "Be prepared to own a domain that may not have a defined job spec yet",
+    "Work with high autonomy and low process overhead",
+    "Contribute to a team that moves fast and measures outcomes, not activity"
+  ],
+  "requirements": {
+    "skills": [
+      "deep domain expertise in your area",
+      "agent/AI familiarity",
+      "autonomy",
+      "communication",
+      "execution",
+      "low ego",
+      "high output"
+    ],
+    "experienceLevel": "Any",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "571ab00d28a27f0e"
+}

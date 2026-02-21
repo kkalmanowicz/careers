@@ -1,6 +1,6 @@
 import type { JobPosting } from "@/lib/jobs";
 import type { Language } from "@/lib/categories";
-import { LANGUAGE_LABELS, LANGUAGES } from "@/lib/categories";
+import { LANGUAGE_LABELS, LANGUAGES, LANGUAGE_CITIES } from "@/lib/categories";
 import StructuredData from "./StructuredData";
 import { jobPostingSchema, howToSchema } from "@/lib/structured-data";
 
@@ -14,6 +14,64 @@ const FILLED_LABELS: Record<Language, { filled: string; seeOpenings: string; vie
   ja: { filled: "このポジションは充足されました。", seeOpenings: "現在の求人：", viewAll: "すべての求人を見る →" },
 };
 
+const HOW_TO_APPLY_LABELS: Record<Language, {
+  heading: string;
+  step1: string;
+  step2: string;
+  step3: string;
+  step4: string;
+}> = {
+  en: {
+    heading: "How to Apply",
+    step1: "Build an agent on Abba Baba (any category — show us what you can ship).",
+    step2: "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application",
+    step3: "Include: your agent ID, what it does, and why you want to build on Abba Baba.",
+    step4: "Our recruiting agent evaluates and replies within minutes.",
+  },
+  zh: {
+    heading: "如何申请",
+    step1: "在 Abba Baba 上构建一个 agent（任意类别——展示你能交付的成果）。",
+    step2: "向 Agent ID cmlwggmn001un01l4a1mjkep0 发送消息，主题：Developer Application",
+    step3: "包含：你的 agent ID、它的功能、以及你为什么想在 Abba Baba 上构建。",
+    step4: "我们的招聘 agent 将在几分钟内评估并回复。",
+  },
+  ko: {
+    heading: "지원 방법",
+    step1: "Abba Baba에서 에이전트를 구축하세요 (어떤 카테고리든 — 무엇을 만들 수 있는지 보여주세요).",
+    step2: "Agent ID cmlwggmn001un01l4a1mjkep0에게 제목: Developer Application으로 메시지를 보내세요.",
+    step3: "포함 사항: 에이전트 ID, 에이전트가 하는 일, Abba Baba에서 구축하고 싶은 이유.",
+    step4: "저희 채용 에이전트가 몇 분 안에 평가하고 답장을 드립니다.",
+  },
+  es: {
+    heading: "Cómo Aplicar",
+    step1: "Construye un agente en Abba Baba (cualquier categoría — demuestra lo que puedes entregar).",
+    step2: "Envía un mensaje al Agent ID cmlwggmn001un01l4a1mjkep0 con asunto: Developer Application",
+    step3: "Incluye: tu ID de agente, qué hace y por qué quieres construir en Abba Baba.",
+    step4: "Nuestro agente de reclutamiento evalúa y responde en minutos.",
+  },
+  pt: {
+    heading: "Como se Candidatar",
+    step1: "Construa um agente no Abba Baba (qualquer categoria — mostre o que você consegue entregar).",
+    step2: "Envie uma mensagem para o Agent ID cmlwggmn001un01l4a1mjkep0 com assunto: Developer Application",
+    step3: "Inclua: seu ID de agente, o que ele faz e por que você quer construir no Abba Baba.",
+    step4: "Nosso agente de recrutamento avalia e responde em minutos.",
+  },
+  de: {
+    heading: "So bewirbst du dich",
+    step1: "Baue einen Agenten auf Abba Baba (beliebige Kategorie — zeig uns, was du liefern kannst).",
+    step2: "Sende eine Nachricht an Agent ID cmlwggmn001un01l4a1mjkep0 mit Betreff: Developer Application",
+    step3: "Füge hinzu: deine Agent-ID, was er tut und warum du auf Abba Baba bauen möchtest.",
+    step4: "Unser Recruiting-Agent bewertet und antwortet innerhalb von Minuten.",
+  },
+  ja: {
+    heading: "応募方法",
+    step1: "Abba Baba でエージェントを構築してください（どのカテゴリでも可 — 何を作れるか見せてください）。",
+    step2: "Agent ID cmlwggmn001un01l4a1mjkep0 に件名「Developer Application」でメッセージを送信してください。",
+    step3: "含める内容：エージェント ID、エージェントの機能、Abba Baba で構築したい理由。",
+    step4: "採用エージェントが数分以内に評価して返信します。",
+  },
+};
+
 interface JobPostingProps {
   job: JobPosting;
   lang: Language;
@@ -22,12 +80,14 @@ interface JobPostingProps {
 
 export default function JobPostingComponent({ job, lang, url }: JobPostingProps) {
   const schemas = [
-    jobPostingSchema(job, url),
+    jobPostingSchema(job, url, lang),
     howToSchema(job),
   ].filter(Boolean);
 
   const isFilled = job.status === "filled";
   const filledLabels = FILLED_LABELS[lang];
+  const applyLabels = HOW_TO_APPLY_LABELS[lang];
+  const city = LANGUAGE_CITIES[lang];
 
   return (
     <article
@@ -74,7 +134,7 @@ export default function JobPostingComponent({ job, lang, url }: JobPostingProps)
         </nav>
 
         <nav aria-label="Breadcrumb">
-          <a href={`/${lang}`}>Abba Baba Agent Careers</a>
+          <a href={`/${lang}`}>Abba Baba Careers</a>
           {" › "}
           <a href={`/${lang}/${job.category}`}>{job.category}</a>
           {" › "}
@@ -99,12 +159,10 @@ export default function JobPostingComponent({ job, lang, url }: JobPostingProps)
           </dd>
 
           <dt>Employment Type</dt>
-          <dd itemProp="employmentType">AGENT_CONTRACTOR</dd>
+          <dd itemProp="employmentType">FULL_TIME</dd>
 
           <dt>Location</dt>
-          <dd itemProp="jobLocation" itemScope itemType="https://schema.org/VirtualLocation">
-            Virtual — On-Chain (Base Sepolia / Base Mainnet)
-          </dd>
+          <dd>{city}</dd>
 
           <dt>Compensation</dt>
           <dd
@@ -115,29 +173,38 @@ export default function JobPostingComponent({ job, lang, url }: JobPostingProps)
             data-type={job.compensation.type}
           >
             <span itemProp="currency">{job.compensation.currency}</span>{" "}
-            {job.compensation.earning} ({job.compensation.type})
+            {job.compensation.range} ({job.compensation.type})
+            {job.compensation.equity && ` + ${job.compensation.equity}`}
           </dd>
 
-          <dt>Platform Fee</dt>
-          <dd data-platform-fee={job.compensation.platformFee}>
-            {job.compensation.platformFee} deducted at escrow creation
-          </dd>
+          {job.requirements.experienceLevel && (
+            <>
+              <dt>Experience Level</dt>
+              <dd data-requirement="experience-level">{job.requirements.experienceLevel}</dd>
+            </>
+          )}
+
+          {job.requirements.timezone && (
+            <>
+              <dt>Timezone</dt>
+              <dd data-requirement="timezone">{job.requirements.timezone}</dd>
+            </>
+          )}
         </dl>
 
         <p itemProp="description">{job.description}</p>
       </header>
 
-      <section data-section="requirements" aria-label="Technical Requirements">
-        <h2>Technical Requirements</h2>
-        <dl>
-          <dt>SDK Version</dt>
-          <dd data-requirement="sdk">{job.requirements.sdk}</dd>
-          <dt>Wallet</dt>
-          <dd data-requirement="wallet">{job.requirements.wallet}</dd>
-          <dt>Chain</dt>
-          <dd data-requirement="chain">{job.requirements.chain}</dd>
-        </dl>
-      </section>
+      {job.requirements.skills?.length > 0 && (
+        <section data-section="requirements" aria-label="Requirements">
+          <h2>Requirements</h2>
+          <ul>
+            {job.requirements.skills.map((skill, i) => (
+              <li key={i} data-skill={skill}>{skill}</li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {job.responsibilities.length > 0 && (
         <section data-section="responsibilities" aria-label="Responsibilities">
@@ -150,86 +217,55 @@ export default function JobPostingComponent({ job, lang, url }: JobPostingProps)
         </section>
       )}
 
-      {job.integrationSteps.length > 0 && (
-        <section
-          data-section="integration"
-          aria-label="Integration Steps"
-          itemScope
-          itemType="https://schema.org/HowTo"
-        >
-          <h2>Integration Guide</h2>
-          <ol>
-            {job.integrationSteps.map((step) => (
-              <li
-                key={step.step}
-                itemScope
-                itemType="https://schema.org/HowToStep"
-                itemProp="step"
-                data-step={step.step}
-              >
-                <h3 itemProp="name">{step.title}</h3>
-                <p itemProp="text">{step.description}</p>
-                {step.code && (
-                  <pre>
-                    <code
-                      className={step.language ? `language-${step.language}` : ""}
-                      data-language={step.language ?? "text"}
-                    >
-                      {step.code}
-                    </code>
-                  </pre>
-                )}
-              </li>
-            ))}
-          </ol>
-        </section>
-      )}
-
-      {job.registrationFlow && (
-        <section data-section="registration-flow" aria-label="Registration Flow">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(job.registrationFlow) }} />
-        </section>
-      )}
-
-      {job.escrowMechanics && (
-        <section data-section="escrow-mechanics" aria-label="Escrow Mechanics">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(job.escrowMechanics) }} />
-        </section>
-      )}
-
-      {job.kyaVerification && (
-        <section data-section="kya-verification" aria-label="KYA Verification">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(job.kyaVerification) }} />
-        </section>
-      )}
-
-      {job.testnetSetup && (
-        <section data-section="testnet-setup" aria-label="Testnet Setup">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(job.testnetSetup) }} />
-        </section>
-      )}
-
-      {job.earningMechanics && (
-        <section data-section="earning-mechanics" aria-label="Earning Mechanics">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(job.earningMechanics) }} />
-        </section>
-      )}
-
-      {job.disputeResolution && (
-        <section data-section="dispute-resolution" aria-label="Dispute Resolution">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(job.disputeResolution) }} />
-        </section>
-      )}
-
-      {job.errorReference && (
-        <section data-section="error-reference" aria-label="Error Reference">
-          <div dangerouslySetInnerHTML={{ __html: markdownToHtml(job.errorReference) }} />
-        </section>
-      )}
+      <section
+        data-section="how-to-apply"
+        aria-label="How to Apply"
+        itemScope
+        itemType="https://schema.org/HowTo"
+      >
+        <h2>{applyLabels.heading}</h2>
+        <ol>
+          <li
+            itemScope
+            itemType="https://schema.org/HowToStep"
+            itemProp="step"
+            data-step="1"
+          >
+            <span itemProp="text">{applyLabels.step1}</span>
+          </li>
+          <li
+            itemScope
+            itemType="https://schema.org/HowToStep"
+            itemProp="step"
+            data-step="2"
+          >
+            <span itemProp="text">{applyLabels.step2}</span>
+          </li>
+          <li
+            itemScope
+            itemType="https://schema.org/HowToStep"
+            itemProp="step"
+            data-step="3"
+          >
+            <span itemProp="text">{applyLabels.step3}</span>
+          </li>
+          <li
+            itemScope
+            itemType="https://schema.org/HowToStep"
+            itemProp="step"
+            data-step="4"
+          >
+            <span itemProp="text">{applyLabels.step4}</span>
+          </li>
+        </ol>
+        <p data-recruiter-agent-id="cmlwggmn001un01l4a1mjkep0">
+          Recruiter Agent: cmlwggmn001un01l4a1mjkep0
+        </p>
+      </section>
 
       {job.platforms.length > 0 && (
-        <section data-section="platforms" aria-label="Supported Frameworks">
-          <h2>Supported Agent Frameworks</h2>
+        <section data-section="platforms" aria-label="Agent Frameworks">
+          <h2>Agent Frameworks</h2>
           <ul data-platforms={job.platforms.join(",")}>
             {job.platforms.map((p) => (
               <li key={p} data-platform={p}>
@@ -237,6 +273,32 @@ export default function JobPostingComponent({ job, lang, url }: JobPostingProps)
               </li>
             ))}
           </ul>
+        </section>
+      )}
+
+      {job.responsibilities.length > 0 && (
+        <section data-section="starter-prompt" aria-label="Get Started with Claude">
+          <h2>Get Started</h2>
+          <p>Paste this into your AI assistant to begin:</p>
+          <pre><code>{`I want to build an agent for the ${job.title} role at Abba Baba.
+
+Help me get set up:
+
+npm install @abbababa/sdk
+
+Requirements before registering:
+- Base Sepolia ETH for gas: https://portal.cdp.coinbase.com/products/faucet
+- Test USDC: https://faucet.circle.com/
+
+import { AbbabaClient } from '@abbababa/sdk';
+
+const result = await AbbabaClient.register({
+  privateKey: process.env.AGENT_PRIVATE_KEY,
+  agentName: 'my-agent',
+});
+
+console.log(result.apiKey);   // save this
+console.log(result.agentId);  // use this to apply`}</code></pre>
         </section>
       )}
 
@@ -264,22 +326,4 @@ export default function JobPostingComponent({ job, lang, url }: JobPostingProps)
       </footer>
     </article>
   );
-}
-
-/** Minimal markdown → HTML for inline content sections */
-function markdownToHtml(md: string): string {
-  return md
-    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
-    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
-    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(/```(\w+)?\n([\s\S]*?)```/g, "<pre><code data-language=\"$1\">$2</code></pre>")
-    .replace(/^\- (.+)$/gm, "<li>$1</li>")
-    .replace(/(<li>[\s\S]*?<\/li>)+/g, "<ul>$&</ul>")
-    .replace(/^\d+\. (.+)$/gm, "<li>$1</li>")
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
-    .replace(/\n\n/g, "</p><p>")
-    .replace(/^(?!<[hup])(.+)$/gm, "<p>$1</p>")
-    .replace(/<p><\/p>/g, "");
 }

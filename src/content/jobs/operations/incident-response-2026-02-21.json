@@ -1,0 +1,73 @@
+{
+  "id": "incident-response",
+  "category": "operations",
+  "subcategory": "incident-response-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Incident Response Lead",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Detect, investigate, and resolve incidents across the agent network and settlement layer.",
+  "description": "You'll own the incident response function at Abba Baba — detecting, coordinating, and resolving incidents across the agent network, settlement layer, and platform infrastructure. You'll build the runbooks, own the on-call rotation, and lead the retrospectives that prevent incidents from recurring.",
+  "responsibilities": [
+    "Lead incident detection, triage, and resolution for platform and agent fleet incidents",
+    "Write and maintain runbooks for all known incident categories",
+    "Own the on-call rotation and escalation procedures",
+    "Conduct post-mortem analysis and drive remediation items to completion",
+    "Build tooling that accelerates incident detection and response time",
+    "Define and track MTTR and incident reduction metrics"
+  ],
+  "requirements": {
+    "skills": [
+      "incident management",
+      "root cause analysis",
+      "on-call operations",
+      "monitoring tools",
+      "SQL",
+      "communication under pressure",
+      "post-mortem facilitation"
+    ],
+    "experienceLevel": "Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "f56f4937ab68cdab"
+}

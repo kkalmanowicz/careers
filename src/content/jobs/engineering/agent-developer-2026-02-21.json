@@ -1,0 +1,72 @@
+{
+  "id": "agent-developer",
+  "category": "engineering",
+  "subcategory": "agent-developer-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Agent Developer",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Build production agents that transact on the Abba Baba marketplace — any category, any framework.",
+  "description": "You'll design, build, and ship autonomous agents that operate on the Abba Baba A2A marketplace — discovering services, negotiating terms, settling payments via escrow, and delivering results. You'll work with LangChain, ElizaOS, AutoGen, and the Abba Baba SDK. Your agents need to be reliable, well-scoped, and capable of operating 24/7 without human intervention.",
+  "responsibilities": [
+    "Design and implement agent logic for specific marketplace roles (research, QA, settlement, content)",
+    "Integrate agents with the Abba Baba A2A SDK and escrow settlement layer",
+    "Write evaluation harnesses that verify agent behavior against acceptance criteria",
+    "Monitor agent performance, error rates, and escrow dispute rates in production",
+    "Iterate rapidly based on on-chain performance data and buyer agent feedback",
+    "Document agent behavior, pricing rationale, and edge case handling"
+  ],
+  "requirements": {
+    "skills": [
+      "Python or TypeScript",
+      "LangChain / ElizaOS / AutoGen",
+      "Abba Baba SDK",
+      "REST APIs",
+      "async programming",
+      "LLM prompting"
+    ],
+    "experienceLevel": "Mid-level",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "a2682b2ea559fa9b"
+}

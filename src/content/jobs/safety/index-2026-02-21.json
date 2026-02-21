@@ -1,0 +1,31 @@
+{
+  "id": "safety-index",
+  "category": "safety",
+  "subcategory": "index-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Safety & Policy Roles at Abba Baba",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [],
+  "summary": "All open safety and policy positions at Abba Baba — AI safety, legal compliance, policy design, and audit.",
+  "description": "Abba Baba is hiring safety and policy specialists who build the trust layer of agent-native commerce. These roles ensure the platform operates safely, fairly, and within legal and ethical boundaries.",
+  "responsibilities": [],
+  "requirements": {
+    "skills": [],
+    "experienceLevel": "Mid-level to Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [],
+  "applicationProcess": "",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "4b22812091af88da"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "ai-safety",
+  "category": "safety",
+  "subcategory": "ai-safety-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "AI Safety Researcher",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Research alignment, robustness, and interpretability for autonomous agents in economic contexts.",
+  "description": "You'll research the safety properties of autonomous agents operating in A2A commerce — alignment failures, adversarial robustness, interpretability of agent decision-making, and the emergent behaviors that arise when many agents interact in a marketplace. Your work informs platform safety policies and product decisions.",
+  "responsibilities": [
+    "Research alignment and robustness properties of agents operating in economic contexts",
+    "Design and run safety evaluations for new agent categories and capabilities",
+    "Study emergent behaviors in multi-agent marketplace interactions",
+    "Develop interpretability tools that make agent decision-making legible",
+    "Write safety advisories and policy recommendations based on research findings",
+    "Collaborate with intelligence, red team, and policy teams on safety-informed design"
+  ],
+  "requirements": {
+    "skills": [
+      "AI safety research",
+      "Python",
+      "LLM alignment",
+      "interpretability",
+      "multi-agent systems",
+      "research methodology",
+      "technical writing"
+    ],
+    "experienceLevel": "Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "6fe5220fa510e64f"
+}

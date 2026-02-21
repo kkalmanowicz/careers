@@ -5,15 +5,14 @@ import type { Language } from "./categories";
 export interface JobCompensation {
   currency: string;
   type: string;
-  platformFee: string;
-  earning: string;
+  range: string;
+  equity?: string;
 }
 
 export interface JobRequirements {
-  sdk: string;
-  wallet: string;
-  chain: string;
-  minBalance?: string;
+  skills: string[];
+  experienceLevel: string;  // "Mid-level", "Senior", "Staff"
+  timezone?: string;        // "UTC±3 preferred" or "Any"
 }
 
 export interface IntegrationStep {
@@ -45,21 +44,13 @@ export interface JobPosting {
   responsibilities: string[];
   requirements: JobRequirements;
   integrationSteps: IntegrationStep[];
+  applicationProcess?: string;
   lastUpdated: string;
   contentHash: string;
   // Batch lifecycle fields
   status?: "active" | "filled";
   batchDate?: string;               // ISO date of the batch this job belongs to
   replacedBy?: ReplacedByJob[];     // populated when filled: links to new batch jobs
-  // Full content sections
-  registrationFlow?: string;
-  escrowMechanics?: string;
-  testnetGraduation?: string;
-  kyaVerification?: string; // deprecated — use testnetGraduation on new jobs
-  testnetSetup?: string;
-  earningMechanics?: string;
-  disputeResolution?: string;
-  errorReference?: string;
 }
 
 const CONTENT_DIR = path.join(process.cwd(), "src/content");
@@ -132,7 +123,7 @@ export function loadAllJobs(lang: Language = "en"): JobPosting[] {
 }
 
 /** Get URL path for a job posting */
-export function getJobUrl(job: JobPosting, lang: Language, baseUrl = "https://agents.abbababa.com"): string {
+export function getJobUrl(job: JobPosting, lang: Language, baseUrl = "https://careers.abbababa.com"): string {
   const cat = job.category;
   const slug = job.subcategory ?? job.id;
   return `${baseUrl}/${lang}/${cat}/${slug}`;

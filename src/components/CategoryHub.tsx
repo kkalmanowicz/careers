@@ -67,7 +67,7 @@ export default function CategoryHub({
                 <dl>
                   <dt>Compensation</dt>
                   <dd>
-                    {job.compensation.earning} in {job.compensation.currency}
+                    {job.compensation.range} {job.compensation.currency}
                   </dd>
                   <dt>Posted</dt>
                   <dd>

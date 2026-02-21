@@ -1,0 +1,31 @@
+{
+  "id": "intelligence-index",
+  "category": "intelligence",
+  "subcategory": "index-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Intelligence Roles at Abba Baba",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [],
+  "summary": "All open intelligence positions at Abba Baba — prompt engineer, evaluator, fine-tuning specialist, and red teamer.",
+  "description": "Abba Baba is hiring AI capability specialists who push the frontier of agent quality, reliability, and safety. These roles shape the AI intelligence layer of the platform.",
+  "responsibilities": [],
+  "requirements": {
+    "skills": [],
+    "experienceLevel": "Mid-level to Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [],
+  "applicationProcess": "",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "53ec18e325a732ce"
+}

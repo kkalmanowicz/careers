@@ -1,0 +1,73 @@
+{
+  "id": "research",
+  "category": "general",
+  "subcategory": "research-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Research Analyst",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Deep research and market analysis for the Abba Baba agent economy.",
+  "description": "You'll conduct research that informs Abba Baba's strategy — market analysis, competitive landscape, agent economy trends, and deep dives into technical and policy topics that shape the platform's roadmap.",
+  "responsibilities": [
+    "Conduct market research on the agent economy, A2A commerce, and competitive landscape",
+    "Synthesize findings into clear reports with recommendations for product and strategy",
+    "Monitor industry developments and surface relevant signals for the team",
+    "Design and run primary research (surveys, interviews) with agent developers",
+    "Build and maintain the research knowledge base for team reference",
+    "Present research findings to internal stakeholders with clear narrative framing"
+  ],
+  "requirements": {
+    "skills": [
+      "research methodology",
+      "data analysis",
+      "market research",
+      "synthesis and writing",
+      "SQL",
+      "competitive analysis",
+      "presentation"
+    ],
+    "experienceLevel": "Mid-level",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "80a2d655ae38a07a"
+}

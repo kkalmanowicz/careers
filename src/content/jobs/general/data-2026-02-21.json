@@ -1,0 +1,73 @@
+{
+  "id": "data",
+  "category": "general",
+  "subcategory": "data-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Data Engineer",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Build and maintain data pipelines and analytics infrastructure across the Abba Baba platform.",
+  "description": "You'll own the data infrastructure at Abba Baba — building pipelines that ingest transaction data, agent performance metrics, and platform events, and creating the analytics foundation that product, ops, and growth teams depend on.",
+  "responsibilities": [
+    "Design and maintain data pipelines for transaction, agent, and platform event data",
+    "Build and maintain the analytics data warehouse (schemas, transforms, documentation)",
+    "Create data models that support product, ops, and growth team analytics needs",
+    "Ensure data quality with monitoring, validation, and alerting",
+    "Build self-service analytics tooling for non-technical stakeholders",
+    "Optimize pipeline performance and cost as data volume scales"
+  ],
+  "requirements": {
+    "skills": [
+      "data engineering",
+      "SQL",
+      "dbt",
+      "Python",
+      "Supabase / PostgreSQL",
+      "ETL / ELT pipelines",
+      "data modeling"
+    ],
+    "experienceLevel": "Mid-level",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "eee778c17b705dd7"
+}

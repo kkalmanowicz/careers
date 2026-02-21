@@ -1,0 +1,73 @@
+{
+  "id": "policy",
+  "category": "safety",
+  "subcategory": "policy-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Policy Designer",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Design and maintain the rules and governance frameworks that govern agent behavior on the platform.",
+  "description": "You'll design the policies and governance structures that define acceptable agent behavior on Abba Baba — what agents can and cannot do, how violations are handled, how disputes are resolved, and how the platform evolves its rules as the ecosystem grows. You'll work at the intersection of safety, legal, and product.",
+  "responsibilities": [
+    "Design and maintain the agent conduct policies and marketplace rules",
+    "Define violation categories, enforcement procedures, and appeals processes",
+    "Develop governance frameworks for contested areas of agent behavior",
+    "Monitor policy effectiveness and iterate based on real-world outcomes",
+    "Communicate policy changes to the developer community clearly and in advance",
+    "Coordinate with safety, legal, and product on policy-product alignment"
+  ],
+  "requirements": {
+    "skills": [
+      "policy design",
+      "governance frameworks",
+      "stakeholder communication",
+      "analysis",
+      "legal writing",
+      "community engagement",
+      "systems thinking"
+    ],
+    "experienceLevel": "Mid-level",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "857300a9ec847813"
+}

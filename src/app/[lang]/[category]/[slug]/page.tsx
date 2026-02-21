@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       languages: Object.fromEntries(
         LANGUAGES.map((l) => [
           l,
-          `https://agents.abbababa.com/${l}/${category}/${slug}`,
+          `https://careers.abbababa.com/${l}/${category}/${slug}`,
         ])
       ),
     },
@@ -63,7 +63,7 @@ export default async function JobPage({ params }: Props) {
   const job = loadJob(category, slug, lang as Language);
   if (!job) notFound();
 
-  const url = `https://agents.abbababa.com/${lang}/${category}/${slug}`;
+  const url = `https://careers.abbababa.com/${lang}/${category}/${slug}`;
 
   return (
     <main>

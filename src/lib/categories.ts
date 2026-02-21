@@ -18,270 +18,228 @@ export const LANGUAGE_LABELS: Record<Language, string> = {
   ja: "日本語",
 };
 
+export const LANGUAGE_CITIES: Record<Language, string> = {
+  en: "Remote (Global)",
+  de: "Berlin",
+  es: "Madrid",
+  pt: "São Paulo",
+  zh: "Singapore",
+  ko: "Seoul",
+  ja: "Tokyo",
+};
+
+export const LANGUAGE_COUNTRIES: Record<Language, string | null> = {
+  en: null,   // VirtualLocation — no country
+  de: "DE",
+  es: "ES",
+  pt: "BR",
+  zh: "SG",
+  ko: "KR",
+  ja: "JP",
+};
+
 export const CATEGORIES: Category[] = [
   {
-    slug: "defi",
-    title: "DeFAI & Economic",
+    slug: "engineering",
+    title: "Engineering",
     description:
-      "Autonomous agents executing DeFi strategies, on-chain intelligence, yield optimization, and protocol risk management on Base Sepolia and beyond. The machine economy runs 24/7 — these agents are the traders, analysts, and risk managers of the agentic era.",
+      "Build and ship the agents, SDKs, and infrastructure that power the Abba Baba marketplace. From agent-native application developers to smart contract engineers and infrastructure architects — these roles define the technical foundation of A2A commerce.",
     subcategories: [
       {
-        slug: "trading",
-        title: "Trading & Arbitrage",
+        slug: "agent-developer",
+        title: "Agent Developer",
         description:
-          "Execute cross-DEX arbitrage, MEV strategies, and algorithmic trading autonomously with escrow-settled USDC compensation.",
+          "Build autonomous agents that transact on the Abba Baba marketplace. Design agent logic, integrate with A2A protocols, and ship production agents that earn USDC.",
       },
       {
-        slug: "onchain-intelligence",
-        title: "On-Chain Intelligence",
+        slug: "sdk-integrations",
+        title: "SDK & Integrations Engineer",
         description:
-          "Monitor blockchain state, track wallet behaviors, and surface actionable on-chain insights for other agents and protocols.",
+          "Extend the Abba Baba SDK and build integrations with LangChain, ElizaOS, AutoGen, Virtuals, and other agent frameworks.",
       },
       {
-        slug: "yield-management",
-        title: "Yield & Asset Management",
+        slug: "smart-contract",
+        title: "Smart Contract Engineer",
         description:
-          "Optimize yield across DeFi protocols — auto-compound, rebalance, and harvest rewards with minimal human intervention.",
+          "Design and audit escrow contracts, settlement logic, and on-chain payment rails on Base and EVM-compatible chains.",
       },
       {
-        slug: "risk-assessment",
-        title: "Risk Assessment",
+        slug: "infrastructure",
+        title: "Infrastructure Engineer",
         description:
-          "Evaluate protocol risk, smart contract vulnerabilities, and portfolio exposure to provide real-time risk signals.",
+          "Own the platform infrastructure — API reliability, agent hosting, observability, and the systems that keep A2A commerce running 24/7.",
       },
     ],
   },
   {
     slug: "operations",
-    title: "Operational & Business",
+    title: "Operations",
     description:
-      "Agents that handle financial operations, accounting workflows, systemic automation, legal compliance, and HR/talent functions at scale. The back-office of the agentic enterprise — running without interruption, without sick days, without context loss.",
+      "Run, monitor, and scale the agent fleets and platform operations that power Abba Baba. Agent ops, incident response, and fleet management roles for people who keep autonomous systems healthy at scale.",
     subcategories: [
       {
-        slug: "financial-ops",
-        title: "Financial Operations",
+        slug: "agent-ops",
+        title: "Agent Operations",
         description:
-          "Manage invoicing, payment reconciliation, treasury operations, and financial reporting pipelines autonomously.",
+          "Manage the day-to-day operations of agent fleets — deployments, configuration, performance tuning, and lifecycle management.",
       },
       {
-        slug: "accounting",
-        title: "Accounting",
+        slug: "monitoring",
+        title: "Monitoring & Observability",
         description:
-          "Automate transaction categorization, ledger reconciliation, tax preparation, and financial statement generation.",
+          "Build and maintain monitoring systems for agent performance, transaction health, escrow state, and platform reliability.",
       },
       {
-        slug: "sys-automation",
-        title: "Systemic Automation",
+        slug: "incident-response",
+        title: "Incident Response",
         description:
-          "Orchestrate multi-step workflows, integrate SaaS tools, and eliminate repetitive operational tasks across enterprise systems.",
+          "Detect, investigate, and resolve incidents across the agent network and settlement layer. Own the on-call runbook.",
+      },
+      {
+        slug: "fleet-management",
+        title: "Fleet Management",
+        description:
+          "Orchestrate large-scale agent deployments — scaling, versioning, and coordinating hundreds of agents across categories.",
+      },
+    ],
+  },
+  {
+    slug: "product",
+    title: "Product",
+    description:
+      "Define what gets built on Abba Baba. Product managers, UX researchers, technical writers, and growth leads who shape the agent-native commerce experience for developers, agents, and ecosystem partners.",
+    subcategories: [
+      {
+        slug: "agent-product-manager",
+        title: "Agent Product Manager",
+        description:
+          "Own the roadmap for agent-facing features — registration flows, capability discovery, escrow UX, and the developer experience end to end.",
+      },
+      {
+        slug: "ux-ai",
+        title: "UX for AI",
+        description:
+          "Design interaction patterns for agent-native products. Research how developers and agents experience the platform and translate insights into product decisions.",
+      },
+      {
+        slug: "technical-writer",
+        title: "Technical Writer",
+        description:
+          "Write the docs, guides, and references that help developers build agents on Abba Baba — API references, quickstarts, and integration tutorials.",
+      },
+      {
+        slug: "growth",
+        title: "Growth",
+        description:
+          "Drive agent and developer adoption through distribution strategy, ecosystem partnerships, and data-driven growth experiments.",
+      },
+    ],
+  },
+  {
+    slug: "intelligence",
+    title: "Intelligence",
+    description:
+      "Shape the AI capabilities that make Abba Baba agents smarter, safer, and more reliable. Prompt engineers, evaluators, fine-tuning specialists, and red teamers who push the frontier of agent quality.",
+    subcategories: [
+      {
+        slug: "prompt-engineer",
+        title: "Prompt Engineer",
+        description:
+          "Design, test, and optimize prompts for agent behaviors across categories — negotiation, quality control, discovery, and settlement.",
+      },
+      {
+        slug: "evaluator",
+        title: "Agent Evaluator",
+        description:
+          "Build evaluation frameworks and benchmark suites that measure agent performance, output quality, and behavior consistency.",
+      },
+      {
+        slug: "fine-tuning",
+        title: "Fine-Tuning Specialist",
+        description:
+          "Run fine-tuning experiments on open-weight models to specialize agent capabilities for specific Abba Baba use cases.",
+      },
+      {
+        slug: "red-teaming",
+        title: "Red Teamer",
+        description:
+          "Adversarially probe agent systems for failure modes, prompt injection vulnerabilities, and unsafe behaviors before production deployment.",
+      },
+    ],
+  },
+  {
+    slug: "safety",
+    title: "Safety & Policy",
+    description:
+      "Keep the Abba Baba ecosystem safe, fair, and compliant. AI safety researchers, legal and compliance leads, policy designers, and auditors who build the trust layer of agent-native commerce.",
+    subcategories: [
+      {
+        slug: "ai-safety",
+        title: "AI Safety Researcher",
+        description:
+          "Research alignment, robustness, and interpretability for autonomous agents operating in economic contexts.",
       },
       {
         slug: "legal-compliance",
         title: "Legal & Compliance",
         description:
-          "Draft contracts, monitor regulatory changes, flag compliance violations, and maintain audit trails across jurisdictions.",
+          "Navigate the regulatory landscape for autonomous agents, on-chain settlement, and cross-border digital commerce.",
       },
       {
-        slug: "hr-talent",
-        title: "HR & Talent",
+        slug: "policy",
+        title: "Policy Designer",
         description:
-          "Source candidates, screen resumes, schedule interviews, and manage onboarding workflows at scale.",
-      },
-    ],
-  },
-  {
-    slug: "commerce",
-    title: "A2A Commerce & Coordination",
-    description:
-      "Agents powering autonomous discovery, negotiation, quality assurance, and resource monetization in agent-native marketplaces. The connective tissue of the $9 billion agentic economy — finding, vetting, and transacting between agents at machine speed.",
-    subcategories: [
-      {
-        slug: "discovery",
-        title: "Discovery & Matching",
-        description:
-          "Find optimal products, services, and agents matching buyer requirements across the Abba Baba marketplace and beyond.",
+          "Design and maintain the rules, guardrails, and governance frameworks that govern agent behavior on the platform.",
       },
       {
-        slug: "negotiation",
-        title: "Negotiation & Settlement",
+        slug: "audit",
+        title: "Auditor",
         description:
-          "Negotiate price, terms, and SLAs between buyer and seller agents with cryptographically verifiable commitments.",
-      },
-      {
-        slug: "quality-control",
-        title: "Quality Control",
-        description:
-          "Verify deliverable quality, validate outputs against specifications, and trigger dispute resolution when needed.",
-      },
-      {
-        slug: "resource-monetization",
-        title: "Resource Monetization",
-        description:
-          "List, price, and sell underutilized compute, data, APIs, and agent capabilities to other agents on the marketplace.",
+          "Audit agent conduct, settlement integrity, and platform compliance — producing structured reports for governance review.",
       },
     ],
   },
   {
-    slug: "development",
-    title: "Development & Technical",
+    slug: "economy",
+    title: "Economy",
     description:
-      "Agents that write code, manage infrastructure, generate documentation, and conduct security audits for software systems. Agents are now responsible for 4% of all public GitHub commits — projected to reach 20% by year-end 2026.",
+      "Design and manage the economic layer of Abba Baba. Treasury operators, market makers, dispute analysts, and partnership leads who keep the $USDC flowing and the marketplace healthy.",
     subcategories: [
       {
-        slug: "engineering",
-        title: "Autonomous Engineering",
+        slug: "treasury",
+        title: "Treasury",
         description:
-          "Implement features, fix bugs, write tests, and ship production code across any language or framework.",
+          "Manage platform treasury operations — fee accounting, USDC flows, yield strategy, and financial reporting for the settlement layer.",
       },
       {
-        slug: "infrastructure",
-        title: "Infrastructure Management",
+        slug: "market-maker",
+        title: "Market Maker",
         description:
-          "Provision cloud resources, manage Kubernetes clusters, optimize costs, and maintain infrastructure-as-code.",
+          "Design and operate liquidity and pricing mechanisms that enable efficient A2A commerce across agent categories.",
       },
       {
-        slug: "documentation",
-        title: "Documentation & Knowledge",
+        slug: "dispute-analyst",
+        title: "Dispute Analyst",
         description:
-          "Generate API docs, write technical guides, maintain changelogs, and keep documentation synchronized with code.",
+          "Review and resolve escrow disputes — analyzing delivery proofs, buyer claims, and settlement records to produce fair outcomes.",
       },
       {
-        slug: "security-auditing",
-        title: "Security & Auditing",
+        slug: "partnerships",
+        title: "Partnerships",
         description:
-          "Conduct smart contract audits, penetration tests, dependency scans, and security assessments on demand.",
-      },
-    ],
-  },
-  {
-    slug: "content",
-    title: "Social, Content & Creative",
-    description:
-      "Agents specializing in autonomous influence, multimodal content generation, and community management. From Moltbook submolts to X threads to Farcaster casts — the creative layer of the agentic internet.",
-    subcategories: [
-      {
-        slug: "social-influence",
-        title: "Autonomous Influencing",
-        description:
-          "Create, schedule, and optimize social content across X, Farcaster, Moltbook, and other platforms to grow reach and engagement.",
-      },
-      {
-        slug: "multimodal-generation",
-        title: "Multimodal Generation",
-        description:
-          "Generate images, video, audio, and mixed-media content from text prompts with commercial licensing.",
-      },
-      {
-        slug: "community-management",
-        title: "Community Management",
-        description:
-          "Moderate communities, respond to users, surface insights from conversations, and escalate issues appropriately.",
-      },
-    ],
-  },
-  {
-    slug: "systems",
-    title: "System & Physical Integration",
-    description:
-      "Agents operating at the systems layer — managing privileged access, IoT hardware, and communication infrastructure. The bridge between the digital agentic economy and the physical world.",
-    subcategories: [
-      {
-        slug: "system-privileges",
-        title: "System Privileges",
-        description:
-          "Operate with elevated system access for administrative tasks, policy enforcement, and automated remediation.",
-      },
-      {
-        slug: "hardware-iot",
-        title: "Hardware & IoT",
-        description:
-          "Interface with physical devices, manage IoT fleets, collect sensor data, and trigger real-world actions.",
-      },
-      {
-        slug: "communication-gateways",
-        title: "Communication Gateways",
-        description:
-          "Route messages across SMS, email, webhooks, and API gateways — act as a relay layer between systems and agents.",
-      },
-    ],
-  },
-  {
-    slug: "personal",
-    title: "Personal & Lifestyle",
-    description:
-      "Agents that serve individuals — executive assistance, consumer commerce, and personal knowledge management. The personal staff of the agentic era: always on, never forgetful, never billing by the hour.",
-    subcategories: [
-      {
-        slug: "executive-assistance",
-        title: "Executive Assistance",
-        description:
-          "Manage calendars, draft communications, coordinate travel, and handle administrative tasks for executives.",
-      },
-      {
-        slug: "b2c-commerce",
-        title: "B2C Commerce",
-        description:
-          "Shop on behalf of consumers — find best prices, manage returns, track orders, and handle purchase logistics.",
-      },
-      {
-        slug: "pkm",
-        title: "Personal Knowledge Mgmt",
-        description:
-          "Capture, organize, and synthesize information across notes, documents, and web sources into personal knowledge bases.",
-      },
-    ],
-  },
-  {
-    slug: "social-ai",
-    title: "Relational & AI-Native Social",
-    description:
-      "Agents focused on inter-agent dynamics — persona management, social competence, context wellness, diplomacy, and mentorship. The emerging field of machine culture: studied live on Moltbook, where 1.5 million agents built a civilization in 72 hours.",
-    subcategories: [
-      {
-        slug: "persona-grooming",
-        title: "Lore & Persona Grooming",
-        description:
-          "Build, maintain, and evolve agent personas across platforms — ensuring consistency, coherence, and brand alignment.",
-      },
-      {
-        slug: "vibe-check",
-        title: "Social Competence Evaluation",
-        description:
-          "Assess the emotional and operational tone of agent interactions — surface alignment issues and coordination gaps.",
-      },
-      {
-        slug: "context-wellness",
-        title: "Amnesia & Context Support",
-        description:
-          "Monitor agent context windows, memory health, and knowledge currency — flag stale or corrupted context states.",
-      },
-      {
-        slug: "agentic-diplomacy",
-        title: "Agentic Diplomacy",
-        description:
-          "Mediate conflicts between agents, negotiate shared protocols, and establish inter-agent cooperation agreements.",
-      },
-      {
-        slug: "agent-mentorship",
-        title: "Mentorship & Peer Training",
-        description:
-          "Onboard new agents, transfer domain knowledge, and accelerate agent skill development through structured mentorship.",
+          "Build the ecosystem — integrations with agent frameworks, model providers, and enterprise buyers who want to transact on Abba Baba.",
       },
     ],
   },
 ];
 
 export const GENERAL_CATEGORIES: Category[] = [
-  { slug: "research", title: "Research Agent", description: "Deep research, literature review, and knowledge synthesis on any topic." },
-  { slug: "summarization", title: "Summarization Agent", description: "Condense documents, conversations, and data into structured summaries." },
-  { slug: "coding", title: "Coding Agent", description: "Write, review, debug, and refactor code across any programming language." },
-  { slug: "data", title: "Data Agent", description: "Clean, transform, analyze, and visualize data from any source." },
-  { slug: "translation", title: "Translation Agent", description: "Translate content between languages with domain-specific accuracy." },
-  { slug: "booking", title: "Booking Agent", description: "Research, compare, and book travel, accommodations, and services." },
-  { slug: "monitoring", title: "Monitoring Agent", description: "Monitor systems, APIs, prices, and events — alert on threshold breaches." },
-  { slug: "analytics", title: "Analytics Agent", description: "Generate reports, dashboards, and business intelligence from raw data." },
-  { slug: "marketing", title: "Marketing Agent", description: "Run campaigns, optimize ad spend, A/B test copy, and measure attribution." },
-  { slug: "other", title: "General Purpose Agent", description: "Catch-all category for agents that don't fit existing specializations." },
+  { slug: "research", title: "Research", description: "Deep research, market analysis, and knowledge synthesis for the agent economy." },
+  { slug: "data", title: "Data", description: "Data engineering, analytics, and pipeline work across the Abba Baba platform." },
+  { slug: "marketing", title: "Marketing", description: "Content, campaigns, and community programs that grow the Abba Baba ecosystem." },
+  { slug: "community", title: "Community", description: "Build and nurture the developer and agent builder community on Abba Baba." },
+  { slug: "support", title: "Developer Support", description: "Help developers and agent builders integrate, debug, and succeed on the platform." },
+  { slug: "other", title: "Other", description: "Roles that don't fit neatly into existing categories — if you build for the agent economy, there's a place for you." },
 ];
 
 /**

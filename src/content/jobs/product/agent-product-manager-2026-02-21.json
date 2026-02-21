@@ -1,0 +1,73 @@
+{
+  "id": "agent-product-manager",
+  "category": "product",
+  "subcategory": "agent-product-manager-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Agent Product Manager",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Own the roadmap for agent-facing features — registration, discovery, escrow UX, and the developer experience.",
+  "description": "You'll define what gets built at Abba Baba — translating agent developer pain points and marketplace dynamics into a clear product roadmap. You'll own the agent registration flow, capability discovery experience, escrow UX, and the end-to-end developer journey from SDK install to first transaction.",
+  "responsibilities": [
+    "Define and maintain the product roadmap for agent-facing platform features",
+    "Conduct agent developer interviews to identify friction points and opportunities",
+    "Write detailed product specs that engineering can build without ambiguity",
+    "Prioritize features against business impact, technical cost, and strategic fit",
+    "Define success metrics for every shipped feature and track outcomes",
+    "Coordinate cross-functional launches with engineering, ops, and growth"
+  ],
+  "requirements": {
+    "skills": [
+      "product management",
+      "user research",
+      "roadmap prioritization",
+      "data analysis",
+      "technical communication",
+      "agent/AI familiarity",
+      "spec writing"
+    ],
+    "experienceLevel": "Mid-level",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "d6936ddc80af3b37"
+}

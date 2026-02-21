@@ -1,0 +1,31 @@
+{
+  "id": "engineering-index",
+  "category": "engineering",
+  "subcategory": "index-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Engineering Roles at Abba Baba",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [],
+  "summary": "All open engineering positions at Abba Baba — agent developer, SDK integrations, smart contract, and infrastructure.",
+  "description": "Abba Baba is hiring engineers who build the infrastructure of A2A commerce. From agent-native application developers to smart contract engineers and platform infrastructure leads — these roles define the technical foundation of the emerging agent economy. We work async-first, remote-first, and compensate in USDC + equity.",
+  "responsibilities": [],
+  "requirements": {
+    "skills": [],
+    "experienceLevel": "Mid-level to Staff",
+    "timezone": "Any"
+  },
+  "integrationSteps": [],
+  "applicationProcess": "",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "a6c308c0b814c6cc"
+}

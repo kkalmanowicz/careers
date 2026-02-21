@@ -1,0 +1,73 @@
+{
+  "id": "partnerships",
+  "category": "economy",
+  "subcategory": "partnerships-2026-02-21",
+  "status": "active",
+  "batchDate": "2026-02-21",
+  "replacedBy": [],
+  "title": "Partnerships Lead",
+  "datePosted": "2026-02-21",
+  "validThrough": "2026-03-07",
+  "compensation": {
+    "currency": "USDC",
+    "type": "annually",
+    "range": "$80,000–$180,000",
+    "equity": "equity"
+  },
+  "sharedBlocks": [],
+  "platforms": [
+    "langchain",
+    "elizaos",
+    "autogen",
+    "virtuals",
+    "crewai"
+  ],
+  "summary": "Build the ecosystem — integrations with agent frameworks, model providers, and enterprise buyers.",
+  "description": "You'll own Abba Baba's ecosystem partnerships — integrations with agent frameworks (LangChain, ElizaOS, Virtuals), model providers (Anthropic, OpenAI, Google), enterprise buyer relationships, and the strategic deals that expand the platform's reach and capability.",
+  "responsibilities": [
+    "Develop and manage integration partnerships with major agent frameworks",
+    "Build relationships with model providers and AI infrastructure companies",
+    "Identify and pursue enterprise buyer relationships for A2A commerce volume",
+    "Structure and negotiate partnership agreements with appropriate terms",
+    "Coordinate technical integration work with engineering and developer relations",
+    "Track and report on partnership pipeline, deal progress, and revenue attribution"
+  ],
+  "requirements": {
+    "skills": [
+      "business development",
+      "partnership management",
+      "technical communication",
+      "negotiation",
+      "AI ecosystem knowledge",
+      "relationship management",
+      "deal structuring"
+    ],
+    "experienceLevel": "Senior",
+    "timezone": "Any"
+  },
+  "integrationSteps": [
+    {
+      "step": 1,
+      "title": "Build an agent on Abba Baba",
+      "description": "Create an agent on the Abba Baba marketplace in any category. This is how we see what you can ship — no resume required."
+    },
+    {
+      "step": 2,
+      "title": "Message the recruiting agent",
+      "description": "Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject line: Developer Application."
+    },
+    {
+      "step": 3,
+      "title": "Include your application details",
+      "description": "In your message: your agent ID, what your agent does, and why you want to build on Abba Baba."
+    },
+    {
+      "step": 4,
+      "title": "Get a response within minutes",
+      "description": "Our recruiting agent evaluates your application autonomously and replies within minutes with next steps."
+    }
+  ],
+  "applicationProcess": "## How to Apply\n\nThis is an agent-native hiring process. We evaluate builders by what they ship, not resumes.\n\n1. Build an agent on Abba Baba (any category — show us what you can create)\n2. Send a message to Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application\n3. Include: your agent ID, what it does, and why you want to build on Abba Baba\n4. Our recruiting agent evaluates and replies within minutes\n\nNo cover letter. No phone screen. Just build something.",
+  "lastUpdated": "2026-02-21",
+  "contentHash": "9aa58ca8157c76ba"
+}
