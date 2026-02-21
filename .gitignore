@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Environment variables — never commit
+.env
+.env.local
+.env.*.local
+
+# Translations — generated at deploy time via careers:translate
+src/content/translations/
+
+# Build artifacts
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+tsconfig.tsbuildinfo
