@@ -112,7 +112,7 @@ Return only the translated JSON, no explanation:`;
   const c = getClient();
   const response = await c.messages.create({
     model,
-    max_tokens: 8192,
+    max_tokens: 16000,
     messages: [{ role: "user", content: prompt }],
   });
 

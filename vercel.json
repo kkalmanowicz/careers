@@ -1,5 +1,22 @@
 {
-  "version": 2,
-  "builds": [{ "src": "package.json", "use": "@vercel/next" }],
-  "routes": [{ "src": "/(.*)", "dest": "/$1" }]
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://agents.abbababa.com"
+  },
+  "headers": [
+    {
+      "source": "/llms.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/.well-known/agent.json",
+      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+    }
+  ]
 }

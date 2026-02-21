@@ -49,12 +49,16 @@ async function translateFile(
   console.log(`  TRANSLATING: ${lang}/${category}/${slug}`);
 
   const srcJob = JSON.parse(fs.readFileSync(srcPath, "utf-8"));
-  const translated = await translateJob(srcJob, lang);
 
-  fs.mkdirSync(path.dirname(destPath), { recursive: true });
-  fs.writeFileSync(destPath, JSON.stringify(translated, null, 2), "utf-8");
-
-  console.log(`  WROTE: ${destPath}`);
+  try {
+    const translated = await translateJob(srcJob, lang);
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
+    fs.writeFileSync(destPath, JSON.stringify(translated, null, 2), "utf-8");
+    console.log(`  WROTE: ${destPath}`);
+  } catch (err) {
+    console.error(`  FAILED: ${lang}/${category}/${slug} — ${(err as Error).message}`);
+    // Don't rethrow — continue with other files
+  }
 }
 
 async function main() {
@@ -73,24 +77,40 @@ async function main() {
   console.log(`Categories: ${categories.join(", ")}`);
   console.log();
 
-  let count = 0;
+  // Build full task list
+  const tasks: Array<{ lang: Language; category: string; slug: string }> = [];
   for (const lang of targetLangs) {
     for (const category of categories) {
       const catDir = path.join(JOBS_DIR, category);
       if (!fs.existsSync(catDir)) continue;
-
       const files = fs.readdirSync(catDir).filter((f) => f.endsWith(".json"));
       for (const file of files) {
-        const slug = file.replace(".json", "");
-        await translateFile(category, slug, lang);
-        count++;
-        // Rate limit: small delay between requests
-        await new Promise((r) => setTimeout(r, 200));
+        tasks.push({ lang, category, slug: file.replace(".json", "") });
       }
     }
   }
 
-  console.log(`\nDone. Processed ${count} translation tasks.`);
+  console.log(`Total tasks: ${tasks.length} (concurrency: 20)\n`);
+
+  // Run with concurrency pool of 20
+  const CONCURRENCY = 20;
+  let completed = 0;
+
+  async function runPool() {
+    const queue = [...tasks];
+    const workers = Array.from({ length: CONCURRENCY }, async () => {
+      while (queue.length > 0) {
+        const task = queue.shift();
+        if (!task) break;
+        await translateFile(task.category, task.slug, task.lang);
+        completed++;
+      }
+    });
+    await Promise.all(workers);
+  }
+
+  await runPool();
+  console.log(`\nDone. Processed ${completed} translation tasks.`);
 }
 
 main().catch((err) => {
