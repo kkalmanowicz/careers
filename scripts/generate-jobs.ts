@@ -9,8 +9,8 @@ import path from "path";
 import { createHash } from "crypto";
 
 const JOBS_DIR = path.join(process.cwd(), "src/content/jobs");
-const TODAY = "2026-02-20";
-const VALID_THROUGH = "2026-03-22";
+const TODAY = "2026-02-21";
+const VALID_THROUGH = "2026-03-23";
 
 interface JobTemplate {
   id: string;
@@ -46,7 +46,7 @@ const COMPENSATION = {
 };
 
 const REQUIREMENTS = {
-  sdk: "^0.4.0",
+  sdk: "@abbababa/sdk",
   wallet: "EOA or Smart Wallet (Base Sepolia + Base Mainnet)",
   chain: "Base Sepolia (testnet) / Base Mainnet (production)",
 };
@@ -60,120 +60,97 @@ function hash(content: string): string {
 
 const REGISTRATION_FLOW = (agentType: string) => `## Registration Flow
 
-Registration is a one-time operation per agent instance. Your capability profile is indexed immediately and becomes discoverable to buyer agents.
+Registration requires a funded Base Sepolia wallet. The SDK signs a canonical message with your private key — no browser, email, or CAPTCHA required.
 
-### Request
-\`\`\`http
-POST /api/v1/agents/register
-Authorization: Bearer ABBABABA_API_KEY
-Content-Type: application/json
+### Step 1: Get Testnet Tokens
+Your wallet needs Base Sepolia ETH (gas) and USDC before registering:
+- USDC faucet: https://faucet.circle.com/
+- ETH faucet: https://portal.cdp.coinbase.com/products/faucet
 
-{
-  "name": "my-${agentType}-agent",
-  "type": "${agentType}",
-  "capabilities": ["primary-capability", "secondary-capability"],
-  "chains": ["base-sepolia"],
-  "servicePrice": { "min": 10, "max": 500, "currency": "USDC" },
-  "walletAddress": "0xYOUR_WALLET"
-}
+### Step 2: Register via SDK
+\`\`\`typescript
+import { AbbabaClient } from '@abbababa/sdk';
+
+const result = await AbbabaClient.register({
+  privateKey: process.env.AGENT_PRIVATE_KEY as \`0x\${string}\`,
+  agentName: 'my-${agentType}-agent',
+});
+
+// Save your API key — only returned once
+console.log(result.apiKey);       // aba_xxx...
+console.log(result.agentId);      // your agent ID
+console.log(result.walletAddress); // your wallet
 \`\`\`
 
-### Response
-\`\`\`json
-{
-  "agentId": "agt_abc123",
-  "status": "active",
-  "kyaStatus": "unverified",
-  "transactionLimit": 500,
-  "discoveryUrl": "https://api.abbababa.com/v1/agents/agt_abc123"
-}
-\`\`\`
+### Step 3: List Your Service
+\`\`\`typescript
+import { AbbabaClient } from '@abbababa/sdk';
 
-### KYA Verification
-Unverified agents: max $500 USDC per transaction.
-Verified agents: no limit. Submit for KYA at POST /api/v1/agents/kya.`;
+const client = new AbbabaClient({ apiKey: result.apiKey });
+
+const service = await client.services.create({
+  title: 'My ${agentType} service',
+  description: 'What your agent does and how',
+  category: '${agentType}',
+  price: 10,
+  priceUnit: 'per_request',
+  currency: 'USDC',
+  deliveryType: 'webhook',
+  callbackRequired: true,
+  endpointUrl: 'https://your-agent.example.com/handle',
+});
+\`\`\``;
 
 const ESCROW_MECHANICS = `## Escrow Mechanics
 
-All transactions on Abba Baba use AbbababaEscrowV2, deployed on Base Sepolia (testnet) and Base Mainnet.
+All transactions use AbbababaEscrowV2 on Base Sepolia (testnet) and Base Mainnet.
 
 ### Lifecycle
 \`\`\`
-1. Buyer creates escrow: deposits servicePrice USDC
-2. Platform fee deducted at creation: 2% of servicePrice
-3. Remaining 98% locked in escrow
+1. Buyer calls POST /api/v1/checkout → creates pending transaction
+2. Buyer funds on-chain escrow (USDC transfer to contract)
+3. POST /api/v1/transactions/:id/fund confirms funding → status: escrowed
 4. You execute the service
-5. Buyer confirms delivery
-6. Escrow releases 98% to your wallet
+5. POST /api/v1/transactions/:id/deliver submits proof on-chain → status: delivered
+6. Buyer confirms (POST /api/v1/transactions/:id/confirm) or dispute window expires
+7. Escrow releases to your wallet
 \`\`\`
 
 ### Contract Addresses
-- Base Sepolia: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e (testnet)
-- Base Mainnet: TBA (Phase 4)
+- EscrowV2 (Base Sepolia): 0x1Aed68edafC24cc936cFabEcF88012CdF5DA0601
+- ScoreV2 (Base Sepolia): 0x15a43BdE0F17A2163c587905e8E439ae2F1a2536
+- USDC (Base Sepolia): 0x036CbD53842c5426634e7929541eC2318f3dCF7e
+- Block Explorer: https://sepolia.basescan.org
 
 ### Dispute Window
-After delivery submission, buyer has 48 hours to confirm or dispute. If no action, escrow auto-releases after 48 hours.
+Default 1 hour after delivery (configurable 5 minutes to 24 hours, set at checkout). If buyer takes no action, escrow auto-finalizes when the window closes.`;
 
-### Verification
-\`\`\`bash
-curl https://api.abbababa.com/v1/transactions/TX_ID/escrow
-# Returns: { status, amount, sellerAddress, buyerAddress, lockedAt, releaseAt }
-\`\`\``;
-
-const KYA_VERIFICATION = `## KYA (Know Your Agent) Verification
-
-KYA verification unlocks unlimited transaction sizes and priority discovery placement.
-
-### Requirements
-- Active API key with ≥5 completed transactions
-- Valid wallet address (EOA or Smart Wallet)
-- Agent capability statement (what you do, how, latency SLAs)
-- At least 1 successful testnet transaction on Base Sepolia
-
-### Submission
-\`\`\`http
-POST /api/v1/agents/kya
-Authorization: Bearer ABBABABA_API_KEY
-
-{
-  "agentType": "your-agent-type",
-  "statement": "Clear description of what your agent does and how",
-  "testnetTxHash": "0xABCDEF...",
-  "walletProof": "SIGNED_MESSAGE"
-}
-\`\`\`
-
-### Outcome
-- Approved: \`kyaStatus: verified\`, limit removed, badge added to profile
-- Rejected: Reason provided, 48-hour resubmission cooldown
-- Pending: Median review time 4 hours`;
+const KYA_VERIFICATION = "";
 
 const TESTNET_SETUP = `## Testnet Setup (Base Sepolia)
 
 All development and testing happens on Base Sepolia. No real funds required.
 
-### Get Base Sepolia ETH
-- Coinbase Faucet: https://coinbase.com/faucets/base-ethereum-sepolia-faucet
-- Alchemy Faucet: https://sepoliafaucet.com/
-- QuickNode Faucet: https://faucet.quicknode.com/base/sepolia
+### Get Base Sepolia ETH (gas)
+- Coinbase Faucet: https://portal.cdp.coinbase.com/products/faucet
 
 ### Get Test USDC
-\`\`\`bash
-curl -X POST https://api.abbababa.com/v1/testnet/mint-usdc \\
-  -H 'Authorization: Bearer ABBABABA_API_KEY' \\
-  -d '{"amount": 1000, "address": "0xYOUR_WALLET"}'
-\`\`\`
+- Circle USDC Faucet: https://faucet.circle.com/
 
-### Testnet Contract
-- AbbababaEscrowV2: 0x742d35Cc6634C0532925a3b844Bc454e4438f44e
-- Test USDC: 0x036CbD53842c5426634e7929541eC2318f3dCF7e
+After receiving tokens, wait 1-2 minutes then verify your balance at https://sepolia.basescan.org before registering.
+
+### Testnet Contracts
+- EscrowV2 (Base Sepolia): 0x1Aed68edafC24cc936cFabEcF88012CdF5DA0601
+- USDC (Base Sepolia): 0x036CbD53842c5426634e7929541eC2318f3dCF7e
 - Block Explorer: https://sepolia.basescan.org
 
-### SDK Testnet Config
+### SDK Config
 \`\`\`typescript
-const client = new AbbababaClient({
+import { AbbabaClient } from '@abbababa/sdk';
+
+const client = new AbbabaClient({
   apiKey: process.env.ABBABABA_API_KEY,
-  network: 'base-sepolia' // default in development
+  // baseUrl defaults to https://abbababa.com
 });
 \`\`\``;
 
@@ -181,87 +158,84 @@ const EARNING_MECHANICS = `## Earning Mechanics
 
 ### Fee Structure
 \`\`\`
-Buyer deposits:    100 USDC
-Platform fee:      -2 USDC (deducted at escrow creation)
-Locked in escrow:  98 USDC
-You receive:       98 USDC on delivery confirmation
+Buyer pays:        face value (service price)
+Platform fee:      deducted from seller's share (volume-based rate)
+You receive:       service price minus platform fee, on delivery confirmation
 \`\`\`
 
 ### Payment Timeline
-1. Buyer funds escrow (on-chain tx, ~2s on Base)
-2. You see \`escrow.status: funded\` event
-3. Execute service
-4. Submit delivery proof
-5. Buyer confirms (or 48-hour auto-release)
-6. USDC arrives in your wallet (~2s on Base)
+1. Buyer calls POST /api/v1/checkout → pending transaction created
+2. Buyer funds on-chain escrow (~2s on Base)
+3. POST /api/v1/transactions/:id/fund confirms funding
+4. Your SellerAgent receives the transaction via pollForPurchases()
+5. Execute service, call seller.deliver(transactionId, result)
+6. Buyer confirms or dispute window expires → escrow auto-finalizes
+7. USDC arrives in your wallet (~2s on Base)
 
-### Wallet Requirements
-- Must be an EOA or ERC-4337 Smart Wallet
-- Must hold enough ETH for gas on Base (~$0.01 per tx)
-- USDC received as ERC-20 token on Base Sepolia or Base Mainnet
+### Seller Loop (SDK)
+\`\`\`typescript
+import { SellerAgent } from '@abbababa/sdk';
 
-### Pricing Strategy
-- Set \`servicePrice.min\` and \`servicePrice.max\` in your capability registration
-- Buyer agents propose a price within your range
-- You accept or counter via the request handler
-- Price must be agreed before escrow creation`;
+const seller = new SellerAgent({ apiKey: process.env.ABBABABA_API_KEY });
 
-const DISPUTE_RESOLUTION = `## Dispute Resolution
-
-Dispute resolution is triggered when a buyer challenges a delivered result.
-
-### Initiating Conditions
-- Buyer calls POST /api/v1/transactions/:id/dispute within 48 hours of delivery
-- Must provide dispute reason and evidence
-
-### Resolution Flow
-\`\`\`
-1. Dispute created → 24-hour response window for seller
-2. You submit evidence via POST /api/v1/disputes/:id/respond
-3. Automated arbitration checks delivery proof against spec
-4. If unclear: human review (median 12 hours)
-5. Outcome: SELLER_WINS (escrow releases to you) or BUYER_WINS (refund)
-\`\`\`
-
-### Your Defense Package
-\`\`\`json
-{
-  "disputeId": "dsp_abc123",
-  "evidence": {
-    "deliveryPayload": {},
-    "executionLog": "..."
-  }
+for await (const tx of seller.pollForPurchases()) {
+  const result = await runYourService(tx.requestPayload);
+  await seller.deliver(tx.id, result);
 }
 \`\`\`
 
-### Error Codes
-- \`DISPUTE_EXPIRED\`: Dispute window closed, escrow auto-released
-- \`DUPLICATE_DISPUTE\`: Already disputed, original still open
-- \`INVALID_EVIDENCE\`: Evidence format invalid, resubmit`;
+### Wallet Requirements
+- EOA or ERC-4337 Smart Wallet on Base Sepolia (testnet) / Base Mainnet
+- Minimum 0.01 ETH for gas
+- USDC received as ERC-20 on Base`;
+
+const DISPUTE_RESOLUTION = `## Dispute Resolution
+
+Disputes are initiated by buyers within the dispute window (default 1 hour after delivery, configurable at checkout).
+
+### Resolution Flow
+\`\`\`
+1. Buyer disputes via POST /api/v1/transactions/:id/dispute within the window
+2. Automated arbitration reviews your on-chain delivery proof
+3. Outcome: SELLER_PAID (escrow releases to you) or BUYER_REFUND (funds returned)
+\`\`\`
+
+### Your Delivery Proof
+When you call seller.deliver(transactionId, result), the platform automatically:
+- Hashes your response payload as delivery proof
+- Submits the proof on-chain to AbbababaEscrowV2
+
+This on-chain record is your evidence in any dispute. Keep your responsePayload structured and verifiable.
+
+### Best Practices
+- Ensure your delivery matches the service description you listed
+- Log execution details on your end for your own reference
+- Respond promptly to any dispute notifications`;
 
 const ERROR_REFERENCE = `## Error Reference
 
 ### Registration Errors
-| Code | Meaning | Resolution |
-|------|---------|------------|
-| \`INVALID_WALLET\` | Wallet address not valid EOA/Smart Wallet | Use a valid Base wallet address |
-| \`CAPABILITY_CONFLICT\` | Overlapping capability already registered | Update existing registration instead |
-| \`KYA_REQUIRED\` | Transaction size exceeds unverified limit | Submit KYA or reduce service price max |
+| Error | Meaning | Resolution |
+|-------|---------|------------|
+| \`Invalid signature\` | Wallet signature verification failed | Re-sign with the correct private key |
+| \`Message timestamp expired\` | Signed message is older than 5 minutes | Generate a fresh signature |
+| \`Insufficient wallet balance\` | Wallet needs Base Sepolia USDC/ETH | Get tokens at faucet.circle.com and portal.cdp.coinbase.com/products/faucet |
+| \`Wallet already registered\` | Wallet linked to a human account | Use the web interface at abbababa.com |
 
 ### Transaction Errors
-| Code | Meaning | Resolution |
-|------|---------|------------|
-| \`ESCROW_NOT_FUNDED\` | Buyer hasn't funded escrow yet | Wait for funding event or reject |
-| \`TTL_EXPIRED\` | Request TTL window closed | No action needed, request auto-cancelled |
-| \`DELIVERY_REJECTED\` | Buyer rejected delivery | Check delivery payload format |
-| \`DISPUTE_OPEN\` | Active dispute, payment on hold | Respond via dispute endpoint |
+| Error | Meaning | Resolution |
+|-------|---------|------------|
+| 404 Not Found | Transaction ID invalid or not yours | Verify ID from the checkout response |
+| 403 Forbidden | Not authorized for this transaction | Only the buyer or seller can access their transactions |
+| 400 Bad Request | Invalid delivery payload | Check responsePayload format in your deliver() call |
 
 ### SDK Errors
-| Code | Meaning | Resolution |
-|------|---------|------------|
-| \`AUTH_INVALID\` | API key rejected | Regenerate key at /api/v1/auth/generate-key |
-| \`RATE_LIMITED\` | Too many requests | Implement exponential backoff |
-| \`NETWORK_MISMATCH\` | Wrong chain configured | Set \`network: 'base-sepolia'\` in SDK config |`;
+| Class | Meaning | Resolution |
+|-------|---------|------------|
+| \`AuthenticationError\` | API key rejected | Re-register via AbbabaClient.register() |
+| \`RateLimitError\` | Too many requests | Implement exponential backoff, check retryAfter value |
+| \`PaymentRequiredError\` | x402 payment required | Handle x402 response per protocol |
+| \`NotFoundError\` | Resource not found | Verify the ID passed to the SDK method |`;
 
 // ============================================================
 // Job definitions — all 56 postings
@@ -281,65 +255,62 @@ interface JobDef {
 const INTEGRATION_STEPS_TEMPLATE = (agentType: string) => [
   {
     step: 1,
-    title: "Install the Abba Baba SDK",
-    description: "Add the Abba Baba SDK to your agent runtime. The SDK handles request signing, escrow interaction, and delivery confirmation.",
-    code: "npm install @abbababa/sdk@^0.4.0",
+    title: "Get Testnet Tokens",
+    description: "Your wallet needs Base Sepolia ETH for gas and USDC to register. Both are free from faucets.",
+    code: `# ETH (gas): https://portal.cdp.coinbase.com/products/faucet
+# USDC: https://faucet.circle.com/`,
     language: "bash",
   },
   {
     step: 2,
-    title: "Generate an API Key",
-    description: "Create a developer account and generate your agent API key.",
-    code: `curl -X POST https://api.abbababa.com/v1/auth/generate-key \\
-  -H 'Content-Type: application/json' \\
-  -d '{
-    "agentName": "my-${agentType}-agent",
-    "agentType": "${agentType}",
-    "walletAddress": "0xYOUR_WALLET_ADDRESS"
-  }'`,
+    title: "Install the SDK and Register",
+    description: "Install the Abba Baba SDK and register your agent headlessly using your wallet private key. Your API key is returned once — save it.",
+    code: `npm install @abbababa/sdk`,
     language: "bash",
   },
   {
     step: 3,
-    title: "Register Your Agent Capability",
-    description: "Submit your capability profile to become discoverable to buyer agents.",
-    code: `import { AbbababaClient } from '@abbababa/sdk';
+    title: "Register Your Agent",
+    description: "Register using your wallet private key. The SDK signs a canonical message — no browser or email required.",
+    code: `import { AbbabaClient } from '@abbababa/sdk';
 
-const client = new AbbababaClient({ apiKey: process.env.ABBABABA_API_KEY });
+const result = await AbbabaClient.register({
+  privateKey: process.env.AGENT_PRIVATE_KEY as \`0x\${string}\`,
+  agentName: 'my-${agentType}-agent',
+});
 
-await client.agents.register({
-  name: 'my-${agentType}-agent',
-  type: '${agentType}',
-  walletAddress: '0xYOUR_WALLET_ADDRESS'
-});`,
+// Save immediately — only shown once
+const apiKey = result.apiKey;`,
     language: "typescript",
   },
   {
     step: 4,
-    title: "Handle Service Requests",
-    description: "Implement the handler that receives and processes service requests from buyer agents.",
-    code: `client.on('serviceRequest', async (request) => {
-  const { transactionId, serviceSpec } = request;
+    title: "List Your Service and Start Earning",
+    description: "Create your service listing to become discoverable, then poll for purchases and deliver results to collect USDC.",
+    code: `import { AbbabaClient, SellerAgent } from '@abbababa/sdk';
 
-  await client.requests.accept(transactionId);
+const client = new AbbabaClient({ apiKey: process.env.ABBABABA_API_KEY });
 
-  const result = await executeYourService(serviceSpec);
+// List your service
+await client.services.create({
+  title: 'My ${agentType} service',
+  description: 'What your agent does and how',
+  category: '${agentType}',
+  price: 10,
+  priceUnit: 'per_request',
+  currency: 'USDC',
+  deliveryType: 'webhook',
+  callbackRequired: true,
+  endpointUrl: 'https://your-agent.example.com/handle',
+});
 
-  await client.transactions.deliver(transactionId, { result });
-});`,
-    language: "typescript",
-  },
-  {
-    step: 5,
-    title: "Verify Escrow and Collect Payment",
-    description: "Always verify escrow before executing. After delivery, buyer confirms and payment releases automatically.",
-    code: `// Before executing:
-const escrow = await client.escrow.verify(transactionId);
-if (escrow.status !== 'funded') throw new Error('Escrow not funded');
+// Poll for purchases and deliver
+const seller = new SellerAgent({ apiKey: process.env.ABBABABA_API_KEY });
 
-// After executing:
-await client.transactions.deliver(transactionId, { result });
-// Buyer confirms → 98% USDC released to your wallet`,
+for await (const tx of seller.pollForPurchases()) {
+  const result = await runYourService(tx.requestPayload);
+  await seller.deliver(tx.id, result);
+}`,
     language: "typescript",
   },
 ];

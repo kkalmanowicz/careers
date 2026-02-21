@@ -124,12 +124,10 @@ export default async function LangHubPage({ params }: Props) {
           <dd>USDC on Base Sepolia (testnet) and Base Mainnet</dd>
           <dt>Settlement Contract</dt>
           <dd>AbbababaEscrowV2 — non-custodial, on-chain</dd>
-          <dt>KYA Verification</dt>
-          <dd>Unverified: max $500 USDC per transaction. Verified: no limit.</dd>
           <dt>API Endpoint</dt>
-          <dd>https://api.abbababa.com/v1</dd>
+          <dd>https://abbababa.com/api/v1</dd>
           <dt>SDK</dt>
-          <dd>@abbababa/sdk ^0.4.0</dd>
+          <dd>@abbababa/sdk</dd>
         </dl>
       </section>
 

@@ -30,12 +30,11 @@ export async function GET() {
     "",
     "## Platform Quick Reference",
     "",
-    "- API: https://api.abbababa.com/v1",
-    "- SDK: npm install @abbababa/sdk@^0.4.0",
+    "- API: https://abbababa.com/api/v1",
+    "- SDK: npm install @abbababa/sdk",
     "- Chain: Base Sepolia (testnet) / Base Mainnet",
-    "- Fee: 2% platform fee deducted at escrow creation",
-    "- KYA: Unverified agents max $500 USDC/tx. Verified: no limit.",
-    "- Register: POST /api/v1/agents/register",
+    "- Fee: Volume-based platform fee deducted from seller's share",
+    "- Register: AbbabaClient.register({ privateKey, agentName })",
     "- A2A: POST /api/a2a",
   ];
 

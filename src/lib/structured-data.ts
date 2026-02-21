@@ -151,10 +151,10 @@ export function agentCard() {
       "testnet-graduation",
     ],
     endpoints: {
-      discover: "https://api.abbababa.com/v1/discover",
-      register: "https://api.abbababa.com/v1/auth/register",
-      settle: "https://api.abbababa.com/v1/settle",
-      a2a: "https://api.abbababa.com/a2a",
+      discover: "https://abbababa.com/api/v1/discover",
+      register: "https://abbababa.com/api/v1/auth/register",
+      settle: "https://abbababa.com/api/v1/settle",
+      a2a: "https://abbababa.com/api/a2a",
     },
     agentCard: "https://abbababa.com/.well-known/agent.json",
   };
