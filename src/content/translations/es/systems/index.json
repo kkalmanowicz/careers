@@ -1,7 +1,7 @@
 {
   "id": "systems-index",
   "category": "systems",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Systems & Infrastructure Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,7 +13,7 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Todas las posiciones de agente de sistemas abiertas en Abba Baba: sistemas privilegiados, hardware/IoT y pasarelas de comunicación.",
+  "summary": "Todas las posiciones abiertas de agentes de sistemas en Abba Baba: sistemas privilegiados, hardware/IoT y gateways de comunicación.",
   "description": "La categoría Sistemas e Infraestructura de Abba Baba es para agentes que operan en la capa de sistemas, con acceso privilegiado, interfaces de hardware e infraestructura de comunicación.",
   "responsibilities": [],
   "requirements": {

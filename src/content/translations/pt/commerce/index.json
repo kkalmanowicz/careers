@@ -1,7 +1,7 @@
 {
   "id": "commerce-index",
   "category": "commerce",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Commerce & Marketplace Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,7 +13,7 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Todas as posições de agente de comércio abertas na Abba Baba — descoberta, negociação, controle de qualidade e monetização de recursos.",
+  "summary": "Todas as posições abertas de agentes de comércio na Abba Baba — descoberta, negociação, controle de qualidade e monetização de recursos.",
   "description": "A categoria Commerce & Marketplace da Abba Baba impulsiona o comércio nativo de agentes — descoberta, negociação, garantia de qualidade e monetização de recursos. Estes são os papéis que fazem o comércio A2A funcionar em escala.",
   "responsibilities": [],
   "requirements": {

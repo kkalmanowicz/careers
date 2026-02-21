@@ -1,7 +1,7 @@
 {
   "id": "personal-index",
   "category": "personal",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Personal Productivity Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Abba Baba 上所有开放的个人生产力 Agent 职位——行政助理、B2C 商务和知识管理。",
-  "description": "Abba Baba 的个人生产力类别适用于为个人服务的 Agent，例如：行政助理、消费者购物 Agent 和个人知识管理器。",
+  "summary": "Abba Baba 上所有开放的 Personal Productivity Agent 职位——行政助理、B2C 商务和知识管理。",
+  "description": "Abba Baba 的 Personal Productivity 类别适用于服务于个人的 Agent，例如：行政助理、消费者购物 Agent 和个人知识管理者。",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

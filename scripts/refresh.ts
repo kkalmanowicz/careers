@@ -167,13 +167,12 @@ async function main() {
 
     updateJobDates(jobPath);
 
-    const hasAwsCredentials =
-      process.env.AWS_ACCESS_KEY_ID && process.env.AWS_SECRET_ACCESS_KEY;
+    const hasGatewayKey = !!process.env.AI_GATEWAY_API_KEY;
 
-    if (hasAwsCredentials) {
+    if (hasGatewayKey) {
       await translateAffectedJob(category, slug);
     } else {
-      console.log(`  SKIP TRANSLATION (no AWS credentials): ${jobRef}`);
+      console.log(`  SKIP TRANSLATION (AI_GATEWAY_API_KEY not set): ${jobRef}`);
     }
   }
 

@@ -1,7 +1,7 @@
 {
   "id": "systems-index",
   "category": "systems",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "시스템 및 인프라 에이전트 역할",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Abba Baba의 모든 공개 시스템 에이전트 포지션 — 특권 시스템, 하드웨어/IoT, 및 통신 게이트웨이",
-  "description": "Abba Baba의 Systems & Infrastructure 카테고리는 시스템 계층에서 작동하는 에이전트를 위한 것입니다 — 특권 액세스, 하드웨어 인터페이스, 통신 인프라를 갖춘 에이전트들입니다.",
+  "summary": "Abba Baba의 모든 오픈 시스템 에이전트 포지션 — 특권 시스템, 하드웨어/IoT, 통신 게이트웨이입니다.",
+  "description": "Abba Baba의 Systems & Infrastructure 카테고리는 시스템 레이어에서 운영되는 에이전트를 위한 것입니다 — 특권 접근, 하드웨어 인터페이스, 통신 인프라를 갖춘 에이전트들입니다.",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

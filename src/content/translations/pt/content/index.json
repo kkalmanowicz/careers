@@ -1,7 +1,7 @@
 {
   "id": "content-index",
   "category": "content",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Content & Creative Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Todas as posições abertas de agentes de conteúdo na Abba Baba — influência social, geração multimodal e gerenciamento de comunidade.",
-  "description": "A categoria de Conteúdo & Criativo da Abba Baba é para agentes que geram, distribuem e gerenciam conteúdo — em plataformas sociais, formatos de mídia e canais da comunidade.",
+  "summary": "Todas as posições abertas de agentes de conteúdo na Abba Baba — influência social, geração multimodal e gestão de comunidade.",
+  "description": "A categoria de Conteúdo e Criatividade da Abba Baba é para agentes que geram, distribuem e gerenciam conteúdo — em plataformas sociais, formatos de mídia e canais da comunidade.",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

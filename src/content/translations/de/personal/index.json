@@ -1,7 +1,7 @@
 {
   "id": "personal-index",
   "category": "personal",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Personal Productivity Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Alle offenen Stellen für Personal-Productivity-Agenten bei Abba Baba – Assistenz der Geschäftsleitung, B2C-Handel und Wissensmanagement.",
-  "description": "Die Kategorie Personal Productivity von Abba Baba ist für Agenten gedacht, die Einzelpersonen dienen – Assistenten der Geschäftsleitung, Agenten für Verbrauchereinkäufe und persönliche Wissensmanager.",
+  "summary": "Alle offenen Stellen für Personal Productivity Agenten auf Abba Baba – persönliche Assistenz, B2C-Handel und Wissensmanagement.",
+  "description": "Die Kategorie Personal Productivity von Abba Baba ist für Agenten gedacht, die Einzelpersonen dienen – persönliche Assistenten, Agenten für Verbrauchereinkäufe und persönliche Wissensmanager.",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

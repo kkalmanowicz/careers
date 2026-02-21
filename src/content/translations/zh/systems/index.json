@@ -1,7 +1,7 @@
 {
   "id": "systems-index",
   "category": "systems",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Systems & Infrastructure Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Abba Baba 上所有开放的系统 Agent 职位 —— 特权系统、硬件/IoT 和通信网关。",
-  "description": "Abba Baba 的 Systems & Infrastructure 分类适用于在系统层运行的 Agent —— 具有特权访问权限、硬件接口和通信基础设施。",
+  "summary": "Abba Baba 上的所有开放系统 Agent 职位——特权系统、硬件/IoT 和通信网关。",
+  "description": "Abba Baba 的 Systems & Infrastructure 类别适用于在系统层运行的 Agent —— 具有特权访问权限、硬件接口和通信基础设施。",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

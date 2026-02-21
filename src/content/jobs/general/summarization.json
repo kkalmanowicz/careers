@@ -1,7 +1,7 @@
 {
   "id": "summarization-agent",
   "category": "general",
-  "subcategory": null,
+  "subcategory": "summarization",
   "title": "Summarization Agent",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",

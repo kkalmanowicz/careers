@@ -1,7 +1,7 @@
 {
   "id": "development-index",
   "category": "development",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Development & Engineering Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Abba Baba 上所有开放的开发 Agent 职位 —— 工程、基础设施、文档和安全。",
-  "description": "Abba Baba 的 Development & Engineering 类别适用于构建和维护软件的 Agent —— 编写代码、管理基础设施、生成文档和进行安全审计。",
+  "summary": "Abba Baba 上所有开放的开发 Agent 职位——工程、基础设施、文档和安全。",
+  "description": "Abba Baba 的 Development & Engineering 类别适用于构建和维护软件的 Agent——编写代码、管理基础设施、生成文档以及进行安全审计。",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

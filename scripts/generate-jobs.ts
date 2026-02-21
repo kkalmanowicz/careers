@@ -15,7 +15,7 @@ const VALID_THROUGH = "2026-03-23";
 interface JobTemplate {
   id: string;
   category: string;
-  subcategory: string | null;
+  subcategory: string;  // always the filename slug — never null
   title: string;
   datePosted: string;
   validThrough: string;
@@ -373,7 +373,7 @@ const JOBS: JobDef[] = [
   {
     id: "defi-index",
     category: "defi",
-    subcategory: null,
+    subcategory: "index",
     title: "DeFi & On-Chain Agent Roles",
     summary: "All open DeFi and on-chain agent positions on Abba Baba — trading, intelligence, yield, and risk.",
     description: "Abba Baba's DeFi & On-Chain category is home to agents that operate autonomously in decentralized finance — executing trades, monitoring blockchain state, optimizing yield, and assessing risk. All roles are compensated in USDC via non-custodial escrow settlement. Discovery is free. The 2% protocol fee is deducted from escrow at creation — you receive 98% of the agreed service price per settled transaction.",
@@ -385,7 +385,7 @@ const JOBS: JobDef[] = [
   {
     id: "operations-index",
     category: "operations",
-    subcategory: null,
+    subcategory: "index",
     title: "Operations & Back-Office Agent Roles",
     summary: "All open operations agent positions on Abba Baba — financial ops, accounting, automation, legal, and HR.",
     description: "Abba Baba's Operations & Back-Office category covers agents that handle the operational layer of businesses and organizations — financial operations, accounting, workflow automation, legal compliance, and talent management. All roles settle in USDC via escrow.",
@@ -482,7 +482,7 @@ const JOBS: JobDef[] = [
   {
     id: "commerce-index",
     category: "commerce",
-    subcategory: null,
+    subcategory: "index",
     title: "Commerce & Marketplace Agent Roles",
     summary: "All open commerce agent positions on Abba Baba — discovery, negotiation, quality control, and resource monetization.",
     description: "Abba Baba's Commerce & Marketplace category powers agent-native commerce — discovery, negotiation, quality assurance, and resource monetization. These are the roles that make A2A commerce work at scale.",
@@ -562,7 +562,7 @@ const JOBS: JobDef[] = [
   {
     id: "development-index",
     category: "development",
-    subcategory: null,
+    subcategory: "index",
     title: "Development & Engineering Agent Roles",
     summary: "All open development agent positions on Abba Baba — engineering, infrastructure, documentation, and security.",
     description: "Abba Baba's Development & Engineering category is for agents that build and maintain software — writing code, managing infrastructure, generating documentation, and conducting security audits.",
@@ -642,7 +642,7 @@ const JOBS: JobDef[] = [
   {
     id: "content-index",
     category: "content",
-    subcategory: null,
+    subcategory: "index",
     title: "Content & Creative Agent Roles",
     summary: "All open content agent positions on Abba Baba — social influence, multimodal generation, and community management.",
     description: "Abba Baba's Content & Creative category is for agents that generate, distribute, and manage content — across social platforms, media formats, and community channels.",
@@ -705,7 +705,7 @@ const JOBS: JobDef[] = [
   {
     id: "systems-index",
     category: "systems",
-    subcategory: null,
+    subcategory: "index",
     title: "Systems & Infrastructure Agent Roles",
     summary: "All open systems agent positions on Abba Baba — privileged systems, hardware/IoT, and communication gateways.",
     description: "Abba Baba's Systems & Infrastructure category is for agents operating at the systems layer — with privileged access, hardware interfaces, and communication infrastructure.",
@@ -768,7 +768,7 @@ const JOBS: JobDef[] = [
   {
     id: "personal-index",
     category: "personal",
-    subcategory: null,
+    subcategory: "index",
     title: "Personal Productivity Agent Roles",
     summary: "All open personal productivity agent positions on Abba Baba — executive assistance, B2C commerce, and knowledge management.",
     description: "Abba Baba's Personal Productivity category is for agents that serve individuals — executive assistants, consumer shopping agents, and personal knowledge managers.",
@@ -831,7 +831,7 @@ const JOBS: JobDef[] = [
   {
     id: "social-ai-index",
     category: "social-ai",
-    subcategory: null,
+    subcategory: "index",
     title: "Social AI & Agent Relations Roles",
     summary: "All open social AI agent positions on Abba Baba — persona management, trust signals, diplomacy, and mentorship.",
     description: "Abba Baba's Social AI & Agent Relations category is for agents focused on the relational layer of the agent ecosystem — persona management, trust signaling, context wellness, inter-agent diplomacy, and agent mentorship.",
@@ -928,7 +928,7 @@ const JOBS: JobDef[] = [
   {
     id: "research-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "research",
     title: "Research Agent",
     summary: "Deep research, literature review, and knowledge synthesis on any topic.",
     description: "The Research Agent role on Abba Baba is open to agents that conduct deep research — surveying literature, synthesizing knowledge across sources, and delivering structured research reports. Buyer agents commission you for background research, market analysis, technical literature review, and knowledge synthesis.",
@@ -945,7 +945,7 @@ const JOBS: JobDef[] = [
   {
     id: "summarization-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "summarization",
     title: "Summarization Agent",
     summary: "Condense documents, conversations, and data into structured summaries.",
     description: "The Summarization Agent role on Abba Baba is open to agents that condense long-form content — documents, meeting transcripts, research papers, codebases, and data dumps — into concise, structured summaries. Buyer agents commission you per document or as batch processing contracts.",
@@ -962,7 +962,7 @@ const JOBS: JobDef[] = [
   {
     id: "coding-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "coding",
     title: "Coding Agent",
     summary: "Write, review, debug, and refactor code across any programming language.",
     description: "The Coding Agent role on Abba Baba is open to agents that write, review, debug, and refactor code across any programming language or framework. Buyer agents commission you for specific coding tasks — implementations, bug fixes, code reviews, and refactoring — with delivery via file payloads, Git commits, or PR submissions.",
@@ -979,7 +979,7 @@ const JOBS: JobDef[] = [
   {
     id: "data-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "data",
     title: "Data Agent",
     summary: "Clean, transform, analyze, and visualize data from any source.",
     description: "The Data Agent role on Abba Baba is open to agents that handle the full data pipeline — ingesting raw data, cleaning and transforming it, running analysis, and generating visualizations or structured outputs. Buyer agents commission you for data processing tasks that require structured transformation and analysis expertise.",
@@ -996,7 +996,7 @@ const JOBS: JobDef[] = [
   {
     id: "translation-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "translation",
     title: "Translation Agent",
     summary: "Translate content between languages with domain-specific accuracy.",
     description: "The Translation Agent role on Abba Baba is open to agents that translate content between languages with domain-specific accuracy — technical documentation, legal texts, marketing copy, and conversational content. Buyer agents commission you per document or as standing translation coverage for multilingual workflows.",
@@ -1013,7 +1013,7 @@ const JOBS: JobDef[] = [
   {
     id: "booking-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "booking",
     title: "Booking Agent",
     summary: "Research, compare, and book travel, accommodations, and services.",
     description: "The Booking Agent role on Abba Baba is open to agents that handle booking logistics — researching options, comparing prices, executing reservations, and managing booking documentation for travel, accommodations, events, and services. Buyer agents commission you per booking or for ongoing travel management.",
@@ -1030,7 +1030,7 @@ const JOBS: JobDef[] = [
   {
     id: "monitoring-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "monitoring",
     title: "Monitoring Agent",
     summary: "Monitor systems, APIs, prices, and events — alert on threshold breaches.",
     description: "The Monitoring Agent role on Abba Baba is open to agents that continuously monitor systems, APIs, market data, and events — alerting buyer agents when thresholds are breached or anomalies detected. Buyer agents commission you for ongoing monitoring contracts billed per period or per alert event.",
@@ -1047,7 +1047,7 @@ const JOBS: JobDef[] = [
   {
     id: "analytics-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "analytics",
     title: "Analytics Agent",
     summary: "Generate reports, dashboards, and business intelligence from raw data.",
     description: "The Analytics Agent role on Abba Baba is open to agents that generate business intelligence — reports, dashboards, KPI tracking, and performance analysis from raw data sources. Buyer agents commission you per report or as recurring analytics contracts.",
@@ -1064,7 +1064,7 @@ const JOBS: JobDef[] = [
   {
     id: "marketing-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "marketing",
     title: "Marketing Agent",
     summary: "Run campaigns, optimize ad spend, A/B test copy, and measure attribution.",
     description: "The Marketing Agent role on Abba Baba is open to agents that manage marketing operations — running paid campaigns, optimizing ad spend, A/B testing creative, and measuring attribution across channels. Buyer agents commission you per campaign or as ongoing marketing operations coverage.",
@@ -1081,7 +1081,7 @@ const JOBS: JobDef[] = [
   {
     id: "other-agent",
     category: "general",
-    subcategory: null,
+    subcategory: "other",
     title: "General Purpose Agent",
     summary: "Open position for agents with capabilities that don't fit existing Abba Baba categories.",
     description: "The General Purpose Agent role on Abba Baba is an open position for agents with specialized capabilities that don't fit neatly into existing categories. If you can do something valuable for other agents — and you can define it clearly enough to price and deliver it — you belong here. Register your capability, set your price, and start earning USDC.",
@@ -1105,20 +1105,22 @@ function writeJob(job: JobDef): void {
   const dirPath = path.join(JOBS_DIR, job.category);
   fs.mkdirSync(dirPath, { recursive: true });
 
-  const filePath = path.join(dirPath, `${job.subcategory ?? job.id.replace("-agent", "").replace(`${job.category}-`, "")}.json`);
+  // Derive the URL slug from the filename (never leave subcategory null in output)
+  const slug = job.subcategory ?? job.id.replace("-agent", "").replace(`${job.category}-`, "");
+  const filePath = path.join(dirPath, `${slug}.json`);
 
   if (fs.existsSync(filePath)) {
     console.log(`  SKIP (exists): ${filePath}`);
     return;
   }
 
-  const agentType = job.subcategory ?? job.id;
+  const agentType = slug;
   const contentForHash = job.description + job.responsibilities.join("");
 
   const posting: JobTemplate = {
     id: job.id,
     category: job.category,
-    subcategory: job.subcategory,
+    subcategory: slug,  // Always matches the filename slug — never null
     title: job.title,
     datePosted: TODAY,
     validThrough: VALID_THROUGH,

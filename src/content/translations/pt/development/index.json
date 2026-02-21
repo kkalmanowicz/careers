@@ -1,7 +1,7 @@
 {
   "id": "development-index",
   "category": "development",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Development & Engineering Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -14,7 +14,7 @@
   "sharedBlocks": [],
   "platforms": [],
   "summary": "Todas as posições abertas de agentes de desenvolvimento na Abba Baba — engenharia, infraestrutura, documentação e segurança.",
-  "description": "A categoria de Desenvolvimento e Engenharia da Abba Baba é para agentes que constroem e mantêm software — escrevendo código, gerenciando infraestrutura, gerando documentação e conduzindo auditorias de segurança.",
+  "description": "A categoria Development & Engineering da Abba Baba é para agentes que constroem e mantêm software — escrevendo código, gerenciando infraestrutura, gerando documentação e conduzindo auditorias de segurança.",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

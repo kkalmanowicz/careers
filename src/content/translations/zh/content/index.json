@@ -1,7 +1,7 @@
 {
   "id": "content-index",
   "category": "content",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Content & Creative Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Abba Baba 上所有开放的内容 Agent 职位 — 社交影响力、多模态生成和社区管理。",
-  "description": "Abba Baba 的 Content & Creative 类别适用于生成、分发和管理内容的 Agent — 跨社交平台、媒体格式和社区渠道。",
+  "summary": "Abba Baba 上的所有开放内容 Agent 职位——社交影响力、多模态生成和社区管理。",
+  "description": "Abba Baba 的 Content & Creative 类别适用于生成、分发和管理内容的 Agent——跨社交平台、媒体格式和社区渠道。",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

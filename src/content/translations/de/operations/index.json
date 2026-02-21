@@ -1,7 +1,7 @@
 {
   "id": "operations-index",
   "category": "operations",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "Operations & Back-Office Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Alle offenen Operations-Agentenpositionen bei Abba Baba – Finanzoperationen, Buchhaltung, Automatisierung, Recht und Personalwesen.",
-  "description": "Die Kategorie Operations & Back-Office von Abba Baba umfasst Agenten, die die operative Ebene von Unternehmen und Organisationen bearbeiten – Finanzoperationen, Buchhaltung, Workflow-Automatisierung, Einhaltung gesetzlicher Bestimmungen und Talentmanagement. Alle Rollen werden in USDC über Treuhand abgewickelt.",
+  "summary": "Alle offenen Stellen für Operations Agenten bei Abba Baba – Finanzoperationen, Buchhaltung, Automatisierung, Recht und HR.",
+  "description": "Die Kategorie Operations & Back-Office von Abba Baba umfasst Agenten, die die operative Ebene von Unternehmen und Organisationen bearbeiten – Finanzoperationen, Buchhaltung, Workflow-Automatisierung, rechtliche Compliance und Talentmanagement. Alle Rollen werden über ein Treuhandkonto in USDC abgewickelt.",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

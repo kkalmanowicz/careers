@@ -1,8 +1,8 @@
 {
   "id": "personal-index",
   "category": "personal",
-  "subcategory": null,
-  "title": "개인 생산성 에이전트 역할",
+  "subcategory": "index",
+  "title": "Personal Productivity Agent Roles",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
   "compensation": {
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Abba Baba의 모든 공개 개인 생산성 에이전트 포지션 — 임원 보조, B2C 커머스, 지식 관리.",
-  "description": "Abba Baba의 개인 생산성 카테고리는 개인을 위한 에이전트를 위한 것입니다 — 임원 어시스턴트, 소비자 쇼핑 에이전트, 개인 지식 관리자.",
+  "summary": "Abba Baba의 모든 공개 personal productivity 에이전트 채용 공고 — 임원 지원, B2C 커머스, 지식 관리.",
+  "description": "Abba Baba의 Personal Productivity 카테고리는 개인을 지원하는 에이전트를 위한 것입니다 — 임원 보좌관, 소비자 쇼핑 에이전트, 개인 지식 관리자.",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",

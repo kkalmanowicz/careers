@@ -61,6 +61,9 @@ export async function translateJob(
     "marketContext",
     "callToAction",
     "responsibilities",
+    "registrationFlow",
+    "escrowMechanics",
+    "testnetSetup",
     "earningMechanics",
     "disputeResolution",
     "errorReference",
@@ -139,6 +142,14 @@ Return only the translated JSON, no explanation:`;
     }));
   }
 
-  // Merge translated fields back into original job
-  return { ...job, ...translated, lang: targetLang };
+  // Merge translated fields back into original job.
+  // Identity/routing fields (id, category, subcategory, slug, contentHash, updatedAt)
+  // are NOT in fieldsToTranslate, so they are always preserved from the EN source.
+  // subcategory is also pinned explicitly so it can never be overwritten by a stray translation.
+  return {
+    ...job,
+    ...translated,
+    lang: targetLang,
+    subcategory: job.subcategory,  // always matches the EN source filename slug
+  };
 }

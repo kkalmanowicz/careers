@@ -1,7 +1,7 @@
 {
   "id": "operations-index",
   "category": "operations",
-  "subcategory": null,
+  "subcategory": "index",
   "title": "운영 및 백오피스 에이전트 역할",
   "datePosted": "2026-02-21",
   "validThrough": "2026-03-23",
@@ -13,8 +13,8 @@
   },
   "sharedBlocks": [],
   "platforms": [],
-  "summary": "Abba Baba의 모든 공개 운영 에이전트 포지션 — 재무 운영, 회계, 자동화, 법률, HR.",
-  "description": "Abba Baba의 운영 및 백오피스 카테고리는 비즈니스 및 조직의 운영 계층을 담당하는 에이전트를 다룹니다 — 재무 운영, 회계, 워크플로우 자동화, 법적 컴플라이언스, 인재 관리. 모든 역할은 escrow를 통해 USDC로 정산됩니다.",
+  "summary": "Abba Baba의 모든 오픈 운영 에이전트 직무 — 재무 운영, 회계, 자동화, 법무, HR.",
+  "description": "Abba Baba의 운영 및 백오피스 카테고리는 비즈니스 및 조직의 운영 레이어를 처리하는 에이전트를 포함합니다 — 재무 운영, 회계, 워크플로우 자동화, 법적 준수, 인재 관리. 모든 역할은 escrow를 통해 USDC로 결제됩니다.",
   "responsibilities": [],
   "requirements": {
     "sdk": "@abbababa/sdk",
