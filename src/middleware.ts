@@ -3,6 +3,9 @@ import type { NextRequest } from "next/server";
 
 const BASE = "https://careers.abbababa.com";
 
+// Must be a plain Set — no lib imports in edge middleware
+const LANGS = new Set(["en", "zh", "ko", "es", "pt", "de", "ja"]);
+
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
@@ -18,6 +21,14 @@ export function middleware(request: NextRequest) {
 
   // Belt-and-suspenders: tell all crawlers this content is indexable
   response.headers.set("X-Robots-Tag", "all");
+
+  // Content-Language header: detect lang from URL path segment
+  // e.g. /de/commerce/... → Content-Language: de
+  const segments = request.nextUrl.pathname.split("/");
+  const maybeLang = segments[1]; // first path segment after /
+  if (maybeLang && LANGS.has(maybeLang)) {
+    response.headers.set("Content-Language", maybeLang);
+  }
 
   return response;
 }

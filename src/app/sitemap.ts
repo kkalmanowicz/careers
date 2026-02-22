@@ -1,15 +1,20 @@
 import type { MetadataRoute } from "next";
-import { LANGUAGES, CATEGORIES, GENERAL_CATEGORIES } from "@/lib/categories";
+import { LANGUAGES, CATEGORIES } from "@/lib/categories";
 import fs from "fs";
 import path from "path";
 
 const BASE = "https://careers.abbababa.com";
 
+/** Build hreflang alternates for a given path suffix (e.g. "/commerce/slug") */
+function alternates(suffix: string) {
+  return Object.fromEntries(LANGUAGES.map((l) => [l, `${BASE}/${l}${suffix}`]));
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   const today = new Date("2026-02-20");
 
-  // Root redirect page
+  // Root redirect
   entries.push({
     url: BASE,
     lastModified: today,
@@ -17,33 +22,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1.0,
   });
 
-  // Language hubs
+  // Language hubs — one entry per lang, alternates across all langs
   for (const lang of LANGUAGES) {
     entries.push({
       url: `${BASE}/${lang}`,
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.9,
+      alternates: { languages: alternates("") },
     });
   }
 
   // Category listing pages
+  const categorySlugs = [...CATEGORIES.map((c) => c.slug), "general"];
   for (const lang of LANGUAGES) {
-    for (const cat of CATEGORIES) {
+    for (const cat of categorySlugs) {
       entries.push({
-        url: `${BASE}/${lang}/${cat.slug}`,
+        url: `${BASE}/${lang}/${cat}`,
         lastModified: today,
         changeFrequency: "monthly",
         priority: 0.8,
+        alternates: { languages: alternates(`/${cat}`) },
       });
     }
-    // General category
-    entries.push({
-      url: `${BASE}/${lang}/general`,
-      lastModified: today,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    });
   }
 
   // Individual job posting pages
@@ -56,9 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const lang of LANGUAGES) {
       for (const category of categories) {
         const catDir = path.join(JOBS_DIR, category);
-        const files = fs
-          .readdirSync(catDir)
-          .filter((f) => f.endsWith(".json"));
+        const files = fs.readdirSync(catDir).filter((f) => f.endsWith(".json"));
 
         for (const file of files) {
           const slug = file.replace(".json", "");
@@ -67,6 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: today,
             changeFrequency: "monthly",
             priority: 0.7,
+            alternates: { languages: alternates(`/${category}/${slug}`) },
           });
         }
       }

@@ -1,19 +1,31 @@
 /**
  * /jobs.json — Pure structured JSON for agent pipeline consumption.
  * No markdown, no HTML. Fast to parse programmatically.
+ * Supports ?lang=de (or any supported language) for translated job data.
  */
 import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { loadAllJobs } from "@/lib/jobs";
+import { LANGUAGES } from "@/lib/categories";
+import type { Language } from "@/lib/categories";
 
 const BASE = "https://careers.abbababa.com";
 
-export async function GET() {
-  const jobs = loadAllJobs("en");
+export async function GET(request: NextRequest) {
+  const { searchParams } = request.nextUrl;
+  const rawLang = searchParams.get("lang") ?? "en";
+  const lang: Language = LANGUAGES.includes(rawLang as Language)
+    ? (rawLang as Language)
+    : "en";
+
+  const jobs = loadAllJobs(lang);
 
   const payload = {
     schema: "https://careers.abbababa.com/openapi.json",
     generated: new Date().toISOString(),
     base: BASE,
+    lang,
+    availableLanguages: LANGUAGES,
     count: jobs.length,
     applyVia: {
       protocol: "A2A/1.0",
