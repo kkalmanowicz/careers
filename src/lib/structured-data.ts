@@ -97,6 +97,19 @@ export function websiteSchema() {
     description:
       "Jobs for people who build, run, and govern AI agents. Engineering, ops, product, intelligence, safety, and economy roles at Abba Baba.",
     publisher: ORG,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://careers.abbababa.com/en/{category}",
+      },
+      "query-input": "required name=category",
+    },
+    sameAs: [
+      "https://careers.abbababa.com/llms.txt",
+      "https://careers.abbababa.com/jobs.json",
+      "https://careers.abbababa.com/feed.xml",
+    ],
   };
 }
 

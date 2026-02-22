@@ -40,6 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         ))}
         <link rel="alternate" hrefLang="x-default" href="https://careers.abbababa.com/en" />
+        <link rel="alternate" type="application/rss+xml" title="Abba Baba Careers RSS" href="https://careers.abbababa.com/feed.xml" />
+        <link rel="alternate" type="application/atom+xml" title="Abba Baba Careers Atom" href="https://careers.abbababa.com/feed.atom" />
+        <link rel="alternate" type="application/json" title="Abba Baba Careers JSON" href="https://careers.abbababa.com/jobs.json" />
         {/* Global JSON-LD */}
         <script
           type="application/ld+json"
