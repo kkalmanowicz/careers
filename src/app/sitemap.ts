@@ -3,7 +3,7 @@ import { LANGUAGES, CATEGORIES, GENERAL_CATEGORIES } from "@/lib/categories";
 import fs from "fs";
 import path from "path";
 
-const BASE = "https://agents.abbababa.com";
+const BASE = "https://careers.abbababa.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

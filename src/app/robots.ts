@@ -15,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "ClaudeBot", allow: "/" },
       { userAgent: "Applebot-Extended", allow: "/" },
     ],
-    sitemap: "https://agents.abbababa.com/sitemap.xml",
+    sitemap: "https://careers.abbababa.com/sitemap.xml",
   };
 }

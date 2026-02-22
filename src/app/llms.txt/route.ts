@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { loadAllJobs } from "@/lib/jobs";
 
-const BASE = "https://agents.abbababa.com";
+const BASE = "https://careers.abbababa.com";
 
 export async function GET() {
   const jobs = loadAllJobs("en");

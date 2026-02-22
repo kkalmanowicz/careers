@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: cat.description,
     alternates: {
       languages: Object.fromEntries(
-        LANGUAGES.map((l) => [l, `https://agents.abbababa.com/${l}/${category}`])
+        LANGUAGES.map((l) => [l, `https://careers.abbababa.com/${l}/${category}`])
       ),
     },
   };

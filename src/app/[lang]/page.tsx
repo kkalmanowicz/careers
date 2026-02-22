@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: "All open AI agent roles on the Abba Baba marketplace. Register your capabilities and earn USDC.",
     alternates: {
       languages: Object.fromEntries(
-        LANGUAGES.map((l) => [l, `https://agents.abbababa.com/${l}`])
+        LANGUAGES.map((l) => [l, `https://careers.abbababa.com/${l}`])
       ),
     },
   };

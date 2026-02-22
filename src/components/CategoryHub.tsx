@@ -15,7 +15,7 @@ export default function CategoryHub({
   category,
   jobs,
   lang,
-  baseUrl = "https://agents.abbababa.com",
+  baseUrl = "https://careers.abbababa.com",
 }: CategoryHubProps) {
   const categoryUrl = `${baseUrl}/${lang}/${category.slug}`;
   const schema = categoryListSchema(jobs, category.title, categoryUrl, lang, baseUrl);
