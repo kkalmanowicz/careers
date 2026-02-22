@@ -3,7 +3,8 @@
  * Rich job data per item: compensation, skills, requirements, full description.
  * Mirrors llms-full.txt content in a structured, autodiscoverable format.
  */
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { createHash } from "crypto";
 import { loadAllJobs } from "@/lib/jobs";
 
 const BASE = "https://careers.abbababa.com";
@@ -17,7 +18,7 @@ function escapeXml(str: string): string {
     .replace(/'/g, "&apos;");
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const jobs = loadAllJobs("en");
 
   const items = jobs
@@ -78,10 +79,25 @@ ${items}
   </channel>
 </rss>`;
 
+  const etag = `"${createHash("md5").update(xml).digest("hex")}"`;
+  const lastModified = new Date(
+    Math.max(...jobs.map((j) => new Date(j.datePosted).getTime()))
+  ).toUTCString();
+
+  // Conditional GET support — crawlers can check if content changed cheaply
+  if (
+    request.headers.get("if-none-match") === etag ||
+    request.headers.get("if-modified-since") === lastModified
+  ) {
+    return new NextResponse(null, { status: 304 });
+  }
+
   return new NextResponse(xml, {
     headers: {
       "Content-Type": "application/rss+xml; charset=utf-8",
       "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+      "ETag": etag,
+      "Last-Modified": lastModified,
     },
   });
 }

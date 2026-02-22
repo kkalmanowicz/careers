@@ -7,6 +7,14 @@ const BASE = "https://careers.abbababa.com";
 const LANGS = new Set(["en", "zh", "ko", "es", "pt", "de", "ja"]);
 
 export function middleware(request: NextRequest) {
+  // Serve IndexNow key verification file at /{key}.txt
+  const indexnowKey = process.env.INDEXNOW_KEY;
+  if (indexnowKey && request.nextUrl.pathname === `/${indexnowKey}.txt`) {
+    return new NextResponse(indexnowKey, {
+      headers: { "Content-Type": "text/plain; charset=utf-8" },
+    });
+  }
+
   const response = NextResponse.next();
 
   // llms.txt autodiscovery on every response (per Anthropic llms.txt spec)
@@ -21,6 +29,9 @@ export function middleware(request: NextRequest) {
 
   // Belt-and-suspenders: tell all crawlers this content is indexable
   response.headers.set("X-Robots-Tag", "all");
+
+  // Signal language variants exist — CDNs and crawlers respect this
+  response.headers.set("Vary", "Accept-Language");
 
   // Content-Language header: detect lang from URL path segment
   // e.g. /de/commerce/... → Content-Language: de

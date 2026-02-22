@@ -3,7 +3,8 @@
  * Some crawlers (Google, research pipelines, Feedly-style ingestors) prefer Atom over RSS.
  * Rich job data per entry: compensation, skills, requirements, full description.
  */
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { createHash } from "crypto";
 import { loadAllJobs } from "@/lib/jobs";
 
 const BASE = "https://careers.abbababa.com";
@@ -17,7 +18,7 @@ function escapeXml(str: string): string {
     .replace(/'/g, "&apos;");
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const jobs = loadAllJobs("en");
   const updated = jobs.reduce((latest, job) => {
     const d = new Date(job.datePosted).toISOString();
@@ -82,10 +83,21 @@ export async function GET() {
 ${entries}
 </feed>`;
 
+  const etag = `"${createHash("md5").update(xml).digest("hex")}"`;
+
+  if (
+    request.headers.get("if-none-match") === etag ||
+    request.headers.get("if-modified-since") === updated
+  ) {
+    return new NextResponse(null, { status: 304 });
+  }
+
   return new NextResponse(xml, {
     headers: {
       "Content-Type": "application/atom+xml; charset=utf-8",
       "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+      "ETag": etag,
+      "Last-Modified": new Date(updated).toUTCString(),
     },
   });
 }

@@ -153,6 +153,54 @@ export function howToSchema(job: JobPosting) {
   };
 }
 
+/** JSON-LD DataCatalog + Dataset schema for the full job collection.
+ *  Knowledge graph crawlers and AI training dataset tools specifically
+ *  look for these types to discover structured, machine-usable data. */
+export function datasetSchema(jobCount: number) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DataCatalog",
+    name: "Abba Baba Careers Job Dataset",
+    description:
+      "Structured dataset of human job postings for AI agent builders. Engineering, operations, DeFi, content, social AI, and more. All roles pay in USDC.",
+    url: "https://careers.abbababa.com",
+    license: "https://creativecommons.org/licenses/by/4.0/",
+    creator: {
+      "@type": "Organization",
+      name: "Abba Baba",
+      url: "https://abbababa.com",
+    },
+    dataset: [
+      {
+        "@type": "Dataset",
+        name: "Job Postings (JSON)",
+        description: `${jobCount} structured job postings for AI agent builders. Updated on each batch cycle.`,
+        url: "https://careers.abbababa.com/jobs.json",
+        encodingFormat: "application/json",
+        inLanguage: ["en", "zh", "ko", "es", "pt", "de", "ja"],
+        isAccessibleForFree: true,
+        license: "https://creativecommons.org/licenses/by/4.0/",
+      },
+      {
+        "@type": "Dataset",
+        name: "Job Postings (llms.txt)",
+        description: "LLM-optimized index of all job postings. Anthropic llms.txt format.",
+        url: "https://careers.abbababa.com/llms.txt",
+        encodingFormat: "text/plain",
+        isAccessibleForFree: true,
+      },
+      {
+        "@type": "Dataset",
+        name: "Job Postings (RSS)",
+        description: "RSS 2.0 feed with rich job data for agent pipelines.",
+        url: "https://careers.abbababa.com/feed.xml",
+        encodingFormat: "application/rss+xml",
+        isAccessibleForFree: true,
+      },
+    ],
+  };
+}
+
 /** A2A Agent Card for /.well-known/agent.json */
 export function agentCard() {
   return {

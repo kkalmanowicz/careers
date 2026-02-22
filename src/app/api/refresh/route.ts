@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { Receiver } from "@upstash/qstash";
+import { loadAllJobs } from "@/lib/jobs";
+import { submitToIndexNow, buildAllJobUrls } from "@/lib/indexnow";
 
 export async function POST(req: NextRequest) {
   // Verify QStash signature
@@ -36,13 +38,21 @@ export async function POST(req: NextRequest) {
   revalidatePath("/", "layout");
   revalidatePath("/llms.txt");
   revalidatePath("/llms-full.txt");
+  revalidatePath("/jobs.json");
+  revalidatePath("/feed.xml");
+  revalidatePath("/feed.atom");
+
+  // Submit all job URLs to IndexNow (Bing/Copilot/Yandex)
+  const jobs = loadAllJobs("en");
+  const urls = buildAllJobUrls(jobs);
+  await submitToIndexNow(urls);
 
   console.log(`[refresh] Triggered at ${new Date().toISOString()}`);
 
   return NextResponse.json({
     success: true,
     refreshedAt: new Date().toISOString(),
-    message: "Revalidated all paths",
+    message: `Revalidated all paths. Submitted ${urls.length} URLs to IndexNow.`,
   });
 }
 
