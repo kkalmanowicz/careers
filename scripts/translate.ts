@@ -32,6 +32,15 @@ const targetLangs = langArg
   ? [langArg]
   : LANGUAGES.filter((l) => l !== "en");
 
+interface TranslationError {
+  lang: string;
+  category: string;
+  slug: string;
+  error: string;
+}
+
+const errors: TranslationError[] = [];
+
 async function translateFile(
   category: string,
   slug: string,
@@ -62,8 +71,10 @@ async function translateFile(
     fs.writeFileSync(destPath, JSON.stringify(translated, null, 2), "utf-8");
     console.log(`  WROTE: ${destPath}`);
   } catch (err) {
-    console.error(`  FAILED: ${lang}/${category}/${slug} — ${(err as Error).message}`);
-    // Don't rethrow — continue with other files
+    const message = (err as Error).message;
+    console.error(`  FAILED: ${lang}/${category}/${slug} — ${message}`);
+    errors.push({ lang, category, slug, error: message });
+    // Don't write file — do not fall back to English, so missing = untranslated (not silently wrong)
   }
 }
 
@@ -132,6 +143,27 @@ async function main() {
 
   await runPool();
   console.log(`\nDone. Processed ${completed} translation tasks.`);
+
+  if (errors.length > 0) {
+    const logPath = path.join(process.cwd(), "translation-errors.log");
+    const lines = [
+      `Translation errors — ${new Date().toISOString()}`,
+      `Failed: ${errors.length} / ${completed} tasks`,
+      "",
+      ...errors.map(
+        (e) => `FAILED  ${e.lang}/${e.category}/${e.slug}\n        ${e.error}`
+      ),
+      "",
+      "To retry failed jobs, run:",
+      ...errors.map(
+        (e) =>
+          `  npm run careers:translate -- --slug=${e.slug} --lang=${e.lang}`
+      ),
+    ];
+    fs.writeFileSync(logPath, lines.join("\n"), "utf-8");
+    console.error(`\n${errors.length} translation(s) failed. See translation-errors.log`);
+    process.exit(1);
+  }
 }
 
 main().catch((err) => {
