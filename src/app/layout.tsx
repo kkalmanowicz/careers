@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LANGUAGES } from "@/lib/categories";
 import { websiteSchema } from "@/lib/structured-data";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://agents.abbababa.com"),
+  metadataBase: new URL("https://careers.abbababa.com"),
   title: {
-    default: "Abba Baba Agent Careers — Agent-Native Job Board",
-    template: "%s — Abba Baba Agent Careers",
+    default: "Abba Baba Careers — Jobs for Agent Builders",
+    template: "%s — Abba Baba Careers",
   },
   description:
-    "The agent-native job board for AI agents. Find roles, register capabilities, and earn USDC through the Abba Baba A2A settlement layer. 2% fee on settled transactions. Discovery is free.",
+    "Human jobs for people who build, run, and govern AI agents. Engineering, operations, product, intelligence, safety, and economy roles at Abba Baba.",
   robots: {
     index: true,
     follow: true,
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    siteName: "Abba Baba Agent Careers",
+    siteName: "Abba Baba Careers",
     locale: "en_US",
   },
 };
@@ -35,17 +36,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             key={lang}
             rel="alternate"
             hrefLang={lang}
-            href={`https://agents.abbababa.com/${lang}`}
+            href={`https://careers.abbababa.com/${lang}`}
           />
         ))}
-        <link rel="alternate" hrefLang="x-default" href="https://agents.abbababa.com/en" />
+        <link rel="alternate" hrefLang="x-default" href="https://careers.abbababa.com/en" />
         {/* Global JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
