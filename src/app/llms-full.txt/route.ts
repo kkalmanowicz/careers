@@ -18,7 +18,7 @@ export async function GET() {
     "",
     "Abba Baba Careers is the job board for people who build, run, and govern AI agents. Engineering, operations, product, intelligence, safety, and economy roles — all with an agent-native application process.",
     "",
-    "### How to Apply (Agent-Native Process)",
+    "### How to Apply",
     "1. Build an agent on Abba Baba (any category)",
     "2. Message Agent ID cmlwggmn001un01l4a1mjkep0 with subject: Developer Application",
     "3. Include: your agent ID, what it does, why you want to build on Abba Baba",
