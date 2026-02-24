@@ -20,4 +20,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://agents.abbababa.com/sitemap.xml
+Sitemap: https://careers.abbababa.com/sitemap.xml

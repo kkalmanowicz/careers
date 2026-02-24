@@ -10,7 +10,7 @@ const daysArg = args.find((a) => a.startsWith("--days="))?.split("=")[1];
 const days = daysArg ? parseInt(daysArg, 10) : 14;
 
 const QSTASH_TOKEN = process.env.QSTASH_TOKEN;
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://agents.abbababa.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://careers.abbababa.com";
 const REFRESH_URL = `${SITE_URL}/api/refresh`;
 
 if (!QSTASH_TOKEN) {

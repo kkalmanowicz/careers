@@ -12,7 +12,8 @@
     "careers:fill": "tsx scripts/fill.ts",
     "careers:expire": "tsx scripts/expire.ts",
     "careers:refresh": "tsx scripts/refresh.ts",
-    "careers:schedule": "tsx scripts/schedule.ts"
+    "careers:schedule": "tsx scripts/schedule.ts",
+    "careers:check-urls": "tsx scripts/check-urls.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.46",
