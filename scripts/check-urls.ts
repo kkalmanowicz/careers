@@ -13,7 +13,6 @@
 
 import fs from "fs";
 import path from "path";
-import { glob } from "fs/promises";
 
 const args = process.argv.slice(2);
 const LIVE = args.includes("--live");
@@ -55,30 +54,32 @@ interface StaticError {
   reason: string;
 }
 
-async function collectFiles(root: string): Promise<string[]> {
-  const files: string[] = [];
-  const cwd = process.cwd();
-
-  for (const dir of SCAN_DIRS) {
-    const dirPath = path.join(cwd, dir);
-    if (!fs.existsSync(dirPath)) continue;
-
-    const iterator = glob(`${dirPath}/**/*`, { withFileTypes: false });
-    for await (const f of iterator) {
-      const filePath = f as unknown as string;
-      if (IGNORE_PATHS.some((ig) => filePath.includes(ig))) continue;
-      if (!SCAN_EXTENSIONS.some((ext) => filePath.endsWith(ext))) continue;
-      if (!fs.statSync(filePath).isFile()) continue;
-      files.push(filePath);
+function walkDir(dir: string, files: string[] = []): string[] {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (IGNORE_PATHS.some((ig) => full.includes(ig))) continue;
+    if (entry.isDirectory()) {
+      walkDir(full, files);
+    } else if (SCAN_EXTENSIONS.some((ext) => entry.name.endsWith(ext))) {
+      files.push(full);
     }
   }
+  return files;
+}
 
+function collectFiles(): string[] {
+  const cwd = process.cwd();
+  const files: string[] = [];
+  for (const dir of SCAN_DIRS) {
+    const dirPath = path.join(cwd, dir);
+    if (fs.existsSync(dirPath)) walkDir(dirPath, files);
+  }
   return files;
 }
 
 async function runStaticChecks(): Promise<StaticError[]> {
   const errors: StaticError[] = [];
-  const files = await collectFiles(process.cwd());
+  const files = collectFiles();
 
   for (const file of files) {
     const content = fs.readFileSync(file, "utf8");
