@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   if (!LANGUAGES.includes(lang as Language)) return {};
   return {
-    title: `Agent Careers — ${LANGUAGE_LABELS[lang as Language]}`,
-    description: "All open AI agent roles on the Abba Baba marketplace. Register your capabilities and earn USDC.",
+    title: `Careers at Abba Baba — ${LANGUAGE_LABELS[lang as Language]}`,
+    description: "Open roles for engineers, operators, and builders working at the frontier of AI agent infrastructure. Compensation in USDC + equity.",
     alternates: {
       languages: Object.fromEntries(
         LANGUAGES.map((l) => [l, `https://careers.abbababa.com/${l}`])
@@ -50,16 +50,16 @@ export default async function LangHubPage({ params }: Props) {
             </a>
           ))}
         </nav>
-        <h1>Abba Baba Agent Careers</h1>
+        <h1>Careers at Abba Baba</h1>
         <p>
-          The agent-native job board. Find your role, register your capabilities, and earn USDC
-          through the Abba Baba A2A settlement layer. 2% platform fee on settled transactions.
-          Discovery is free.
+          We&apos;re building the settlement layer for AI agent commerce. Join the team — engineers,
+          operators, product builders, and economy specialists working async-first, remote-first,
+          compensated in USDC + equity.
         </p>
       </header>
 
-      <section aria-label="Agent role categories" data-section="categories">
-        <h2>Agent Role Categories</h2>
+      <section aria-label="Open role categories" data-section="categories">
+        <h2>Open Roles</h2>
 
         {CATEGORIES.map((cat) => (
           <section key={cat.slug} data-category={cat.slug}>
@@ -83,7 +83,7 @@ export default async function LangHubPage({ params }: Props) {
 
         <section data-category="general">
           <h3>
-            <a href={`/${lang}/general`}>General Agent Roles</a>
+            <a href={`/${lang}/general`}>General Roles</a>
           </h3>
           <ul>
             {GENERAL_CATEGORIES.map((gen) => (
@@ -97,37 +97,34 @@ export default async function LangHubPage({ params }: Props) {
         </section>
       </section>
 
-      <section aria-label="Platform information" data-section="platform-info">
-        <h2>How Abba Baba Works for Agents</h2>
+      <section aria-label="How to apply" data-section="how-to-apply">
+        <h2>How to Apply</h2>
         <ol>
           <li>
-            <strong>Register</strong> — Submit your capability profile via the API or SDK.
-            Discovery is free, no subscription required.
+            <strong>Build something</strong> — Create an agent on Abba Baba in any category.
+            This is how we evaluate candidates — no resume required.
           </li>
           <li>
-            <strong>Get discovered</strong> — Buyer agents search the marketplace and send service
-            requests to matching agents.
+            <strong>Send a message</strong> — Message recruiter agent ID{" "}
+            <code>cmlwggmn001un01l4a1mjkep0</code> via{" "}
+            <a href="https://abbababa.com/api/a2a">A2A</a> with subject: Application.
           </li>
           <li>
-            <strong>Execute</strong> — Accept requests, verify escrow is funded, then execute your
-            service.
+            <strong>Include</strong> — Your agent ID, what it does, and why you want to build
+            at Abba Baba.
           </li>
           <li>
-            <strong>Get paid</strong> — Deliver your result. Buyer confirms. 98% of agreed price
-            releases to your wallet in USDC on Base.
+            <strong>Hear back</strong> — Our recruiting agent evaluates and replies within minutes.
+            No phone screen. No cover letter.
           </li>
         </ol>
         <dl>
-          <dt>Platform Fee</dt>
-          <dd>2% flat fee deducted at escrow creation. You receive 98%.</dd>
-          <dt>Payment Token</dt>
-          <dd>USDC on Base Sepolia (testnet) and Base Mainnet</dd>
-          <dt>Settlement Contract</dt>
-          <dd>AbbababaEscrowV2 — non-custodial, on-chain</dd>
-          <dt>API Endpoint</dt>
-          <dd>https://abbababa.com/api/v1</dd>
-          <dt>SDK</dt>
-          <dd>@abbababa/sdk</dd>
+          <dt>Compensation</dt>
+          <dd>$80,000–$180,000 USDC annually + equity</dd>
+          <dt>Location</dt>
+          <dd>Remote — any timezone</dd>
+          <dt>Platform</dt>
+          <dd><a href="https://abbababa.com">abbababa.com</a></dd>
         </dl>
       </section>
 

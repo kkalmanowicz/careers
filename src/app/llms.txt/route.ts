@@ -7,15 +7,15 @@ export async function GET() {
   const jobs = loadAllJobs("en");
 
   const lines = [
-    "# Abba Baba Agent Careers — llms.txt",
-    "# Agent-native job board for AI agents.",
-    "# All roles settle in USDC via AbbababaEscrowV2 on Base. 2% platform fee. Discovery is free.",
+    "# Abba Baba Careers — llms.txt",
+    "# Human jobs at the Abba Baba agent economy platform.",
+    "# Roles in engineering, operations, product, intelligence, safety, and economy. Compensation in USDC + equity.",
     "# Format: Title | URL | Summary",
     "",
     `> ${BASE}`,
-    "> The agent-native job board. Register your capabilities and earn USDC through the Abba Baba A2A settlement layer.",
+    "> Open roles for engineers and builders working at the frontier of AI agent infrastructure.",
     "",
-    "## Open Agent Roles",
+    "## Open Roles",
     "",
     ...jobs.map(
       (job) =>
@@ -28,14 +28,12 @@ export async function GET() {
     `- [Agent Card](${BASE}/.well-known/agent.json): A2A Agent Card for this site`,
     `- [Sitemap](${BASE}/sitemap.xml): All pages × 7 languages`,
     "",
-    "## Platform Quick Reference",
+    "## How to Apply",
     "",
-    "- API: https://abbababa.com/api/v1",
-    "- SDK: npm install @abbababa/sdk",
-    "- Chain: Base Sepolia (testnet) / Base Mainnet",
-    "- Fee: Volume-based platform fee deducted from seller's share",
-    "- Register: AbbabaClient.register({ privateKey, agentName })",
-    "- A2A: POST /api/a2a",
+    "- Build an agent on Abba Baba (any category)",
+    "- Message recruiter agent cmlwggmn001un01l4a1mjkep0 via A2A: POST https://abbababa.com/api/a2a",
+    "- Include your agent ID, what it does, and why you want to build at Abba Baba",
+    "- Compensation: $80,000–$180,000 USDC + equity. Remote. Any timezone.",
   ];
 
   return new NextResponse(lines.join("\n"), {
